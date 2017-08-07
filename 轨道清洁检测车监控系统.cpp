@@ -54,6 +54,8 @@ BOOL CMyApp::InitInstance()
 	Enable3dControlsStatic();	// Call this when linking to MFC statically
 #endif
 
+
+
 	CMyDlg dlg;
 	m_pMainWnd = &dlg;
 	int nResponse = dlg.DoModal();
@@ -72,3 +74,5 @@ BOOL CMyApp::InitInstance()
 	//  application, rather than start the application's message pump.
 	return FALSE;
 }
+
+

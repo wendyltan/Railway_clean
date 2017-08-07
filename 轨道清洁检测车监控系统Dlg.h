@@ -4,33 +4,52 @@
 #if !defined(AFX_DLG_H__26DE1B04_27D5_4B4F_A8C1_C702549E8F54__INCLUDED_)
 #define AFX_DLG_H__26DE1B04_27D5_4B4F_A8C1_C702549E8F54__INCLUDED_
 
-#include "OilPreDlg.h"	// Added by ClassView
-#include "OilTemDlg.h"	// Added by ClassView
 #include "OutsideTemDlg.h"	// Added by ClassView
-#include "WindPreDlg.h"	// Added by ClassView
+#include "InsideTempDlg.h"
+#include "VoltDlg.h"
+#include "WaterTempDlg.h"
+
+
+
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
 
 /////////////////////////////////////////////////////////////////////////////
 // CMyDlg dialog
-#include "CleanWaterDlg.h"
-#include "DirtyWaterDlg.h"
-#include "OilPreDlg.h"
-#include "OilTemDlg.h"
-#include "OutsideTemDlg.h"
-#include "WindPreDlg.h"
+
+#include "TeeInclude.h"
+
 
 class CMyDlg : public CDialog
 {
 // Construction
 public:
+	void dealTimer(int teeID,CString chartname);
+	void ChartInit(int teeID,CString chartname);
+	void DatabaseDisconnect();
+	_RecordsetPtr JudgeType(int type);
+	void ReadTemp();
+	void DatabaseConnect();
 	CMyDlg(CWnd* pParent = NULL);	// standard constructor
-
+	
 // Dialog Data
 	//{{AFX_DATA(CMyDlg)
-	enum { IDD = IDD_MY_DIALOG };
-		// NOTE: the ClassWizard will add data members here
+	enum { IDD = IDD_DIALOG_MAIN };
+	CString	m_frontWind;
+	CString	m_frontRight;
+	CString	m_frontLeft;
+	CString	m_backRight;
+	CString	m_backLeft;
+	CString	m_dirtyWater;
+	CString	m_cleanWater;
+	CString	m_backWind1;
+	CString	m_backWind2;
+	CString	m_alarm;
+	CString	m_longitude;
+	CString	m_latitude;
+	CString	m_highpre;
+	CString	m_lowpre;
 	//}}AFX_DATA
 
 	// ClassWizard generated virtual function overrides
@@ -50,21 +69,45 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	afx_msg void OnAbout();
-	afx_msg void OnButtonWindpre();
 	afx_msg void OnButtonOutsideTem();
-	afx_msg void OnButtonOilpre();
-	afx_msg void OnButtonOilTem();
-	afx_msg void OnButtonDirtyWaterBox();
-	afx_msg void OnButtonCleanWaterBox();
+	afx_msg void OnButtonInsideTemp();
+	afx_msg void OnButtonVolt();
+	afx_msg void OnButtonWaterTemp();
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg void OnTimer(UINT nIDEvent);
+	afx_msg void OnCleanWater();
+	afx_msg void OnDestroy();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 private:
-	CWindPreDlg m_windPressureDlg;
-	COutsideTemDlg m_outsideTemperatureDlg;
-	COilTemDlg m_oilTemperatureDlg;
-	COilPreDlg m_oilPressureDlg;
-	CDirtyWaterDlg m_dirtyWaterDlg;
-	CCleanWaterDlg m_cleanWaterDlg;
+
+	COutsideTemDlg m_outsideTempDlg;
+	CInsideTempDlg m_insideTempDlg;
+	CVoltDlg m_voltDlg;
+	CWaterTempDlg m_waterTempDlg;
+    
+	//record count
+	int tcount;
+	int vcount;
+
+	//four chart display in main ui
+	CTChart m_oChart;
+	CTChart m_iChart;
+	CTChart m_vChart;
+	CTChart m_wChart;
+
+	//for ado connection
+
+
+	_ConnectionPtr m_pConnection;
+	_RecordsetPtr m_pRecordset;
+	
+	_RecordsetPtr m_pCurrentset[7];
+	
+	double m_RecordNum;
+
+
+
 
 };
 

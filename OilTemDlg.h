@@ -1,6 +1,4 @@
-//{{AFX_INCLUDES()
-//#include "CHARTCTRL_SOURCE\ChartCtrl.h"	// Added by ClassView
-#include "tchart1.h"
+//{{AFX_INCLUDES()	// Added by ClassView
 //}}AFX_INCLUDES
 #if !defined(AFX_OILTEMDLG_H__2B4FF59A_40C1_45E0_9CF8_2E3CAAA2E62F__INCLUDED_)
 #define AFX_OILTEMDLG_H__2B4FF59A_40C1_45E0_9CF8_2E3CAAA2E62F__INCLUDED_
@@ -15,8 +13,6 @@
 // COilTemDlg dialog
 
 //test ctrl for teechart
-#include "Chartinclude.h"
-#include "TeeChartDefines.h"
 
 class COilTemDlg : public CDialog
 {
@@ -27,7 +23,6 @@ public:
 // Dialog Data
 	//{{AFX_DATA(COilTemDlg)
 	enum { IDD = IDD_DIALOG_OIL_TEM };
-	CTChart	m_OilTemChart;
 	//}}AFX_DATA
 
 
@@ -43,8 +38,6 @@ protected:
 
 	// Generated message map functions
 	//{{AFX_MSG(COilTemDlg)
-	virtual BOOL OnInitDialog();
-	afx_msg void OnTimer(UINT nIDEvent);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 private:

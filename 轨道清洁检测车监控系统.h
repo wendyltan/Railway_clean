@@ -12,6 +12,7 @@
 	#error include 'stdafx.h' before including this file for PCH
 #endif
 
+
 #include "resource.h"		// main symbols
 
 /////////////////////////////////////////////////////////////////////////////
@@ -23,6 +24,7 @@ class CMyApp : public CWinApp
 {
 public:
 	CMyApp();
+
 
 // Overrides
 	// ClassWizard generated virtual function overrides
