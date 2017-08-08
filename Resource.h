@@ -18,6 +18,8 @@
 #define IDD_DIALOG_INSIDE_TEMP          143
 #define IDD_DIALOG_WATER_TEMP           144
 #define IDD_DIALOG_VOLT                 145
+#define IDD_DIRTY_WATER_CHART           154
+#define IDD_WATER_TEMP_CHART            155
 #define IDC_EDIT_WIND_PRE               1005
 #define IDC_BUTTON_WINDPRE              1007
 #define IDC_BUTTON_OILPRE               1008
@@ -58,6 +60,8 @@
 #define IDC_BUTTON_SHOW_SELECT          1037
 #define IDC_BUTTON3                     1038
 #define IDC_BUTTON_ALRAM                1038
+#define IDC_EDIT_OUTSIDE                1038
+#define IDC_EDIT_INSIDE                 1039
 #define IDC_BUTTON4                     1040
 #define IDC_BUTTON_EDIT_RANGE           1040
 #define IDC_BUTTON5                     1041
@@ -85,7 +89,10 @@
 #define IDC_TCHART2                     1068
 #define IDC_WATER_MAIN                  1070
 #define IDC_INSIDE_MAIN                 1071
+#define IDC_GRID_DIRTY_WATER            1071
 #define IDC_OUTSIDE_MAIN                1072
+#define IDC_EDIT_ENGINE                 1072
+#define IDC_GRID_TEMP                   1073
 #define IDM_LOOKBACK                    32771
 #define IDM_CURRANGE                    32772
 #define IDM_ALRAMHIS                    32773
@@ -106,9 +113,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        154
+#define _APS_NEXT_RESOURCE_VALUE        156
 #define _APS_NEXT_COMMAND_VALUE         32785
-#define _APS_NEXT_CONTROL_VALUE         1071
+#define _APS_NEXT_CONTROL_VALUE         1074
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

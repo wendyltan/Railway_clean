@@ -5,6 +5,8 @@
 #include "轨道清洁检测车监控系统.h"
 #include "轨道清洁检测车监控系统Dlg.h"
 #include "CleanWaterChart.h"
+#include "DirtyWaterChart.h"
+#include "WaterTempChart.h"
 
 #include "TeeInclude.h"
 
@@ -217,6 +219,8 @@ BEGIN_MESSAGE_MAP(CMyDlg, CDialog)
 	ON_WM_CTLCOLOR()
 	ON_WM_TIMER()
 	ON_COMMAND(IDM_CLEAN_WATER, OnCleanWater)
+	ON_COMMAND(IDM_WATER_TEMP, OnWaterTemp)
+	ON_COMMAND(IDM_DIRTY_WATER, OnDirtyWater)
 	ON_WM_DESTROY()
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
@@ -564,6 +568,22 @@ void CMyDlg::OnCleanWater()
 	// TODO: Add your command handler code here
 	CCleanWaterChart cwc;
 	cwc.DoModal();
+	
+}
+
+void CMyDlg::OnDirtyWater() 
+{
+	// TODO: Add your command handler code here
+	CDirtyWaterChart dwc;
+	dwc.DoModal();
+	
+}
+
+void CMyDlg::OnWaterTemp() 
+{
+	// TODO: Add your command handler code here
+	CWaterTempChart wtc;
+	wtc.DoModal();
 	
 }
 

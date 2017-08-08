@@ -76,6 +76,8 @@ protected:
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	afx_msg void OnTimer(UINT nIDEvent);
 	afx_msg void OnCleanWater();
+	afx_msg void OnDirtyWater();
+	afx_msg void OnWaterTemp();
 	afx_msg void OnDestroy();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()

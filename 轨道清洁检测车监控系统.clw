@@ -2,13 +2,13 @@
 
 [General Info]
 Version=1
-LastClass=CMyDlg
+LastClass=CWaterTempChart
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "轨道清洁检测车监控系统.h"
 LastPage=0
 
-ClassCount=9
+ClassCount=11
 Class1=CCleanWaterChart
 Class2=CInsideTempDlg
 Class3=COilTemDlg
@@ -19,15 +19,19 @@ Class7=CMyApp
 Class8=CAboutDlg
 Class9=CMyDlg
 
-ResourceCount=8
-Resource1=IDD_DIALOG_WATER_TEMP
-Resource2=IDD_DIALOG_VOLT
-Resource3=IDD_ABOUTBOX
-Resource4=IDD_CLEAN_WATER_CHART
-Resource5=IDD_DIALOG_OUTSIDE_TEM
-Resource6=IDD_DIALOG_MAIN
-Resource7=IDD_DIALOG_INSIDE_TEMP
-Resource8=IDR_DIALOG_MENU
+ResourceCount=10
+Resource1=IDD_ABOUTBOX
+Resource2=IDD_WATER_TEMP_CHART
+Resource3=IDD_DIALOG_VOLT
+Resource4=IDD_DIRTY_WATER_CHART
+Resource5=IDD_CLEAN_WATER_CHART
+Resource6=IDD_DIALOG_INSIDE_TEMP
+Resource7=IDD_DIALOG_WATER_TEMP
+Resource8=IDD_DIALOG_MAIN
+Class10=CDirtyWaterChart
+Resource9=IDD_DIALOG_OUTSIDE_TEM
+Class11=CWaterTempChart
+Resource10=IDR_DIALOG_MENU
 
 [CLS:CCleanWaterChart]
 Type=0
@@ -98,7 +102,7 @@ HeaderFile=轨道清洁检测车监控系统Dlg.h
 ImplementationFile=轨道清洁检测车监控系统Dlg.cpp
 Filter=D
 VirtualFilter=dWC
-LastObject=IDC_LOW_WATER_PRE
+LastObject=CMyDlg
 
 [DLG:IDD_CLEAN_WATER_CHART]
 Type=1
@@ -235,4 +239,76 @@ Control41=IDC_WATER_MAIN,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
 Control42=IDC_STATIC,button,1342177287
 Control43=IDC_INSIDE_MAIN,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
 Control44=IDC_OUTSIDE_MAIN,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
+
+[DLG:IDD_DIRTY_WATER_CHART]
+Type=1
+Class=CDirtyWaterChart
+ControlCount=21
+Control1=IDC_STATIC,button,1342177287
+Control2=IDC_BUTTON_LOOKBACK,button,1342242816
+Control3=IDC_STATIC,button,1342177287
+Control4=IDC_STATIC,button,1342177287
+Control5=IDC_BUTTON_EDIT_RANGE,button,1342242816
+Control6=IDC_BUTTON_EDIT_ALRAM,button,1342242816
+Control7=IDC_RANGE_CHANGE,edit,1350631552
+Control8=IDC_ALARM_CHANGE,edit,1350631552
+Control9=IDC_BUTTON_CONFIRM,button,1342242816
+Control10=IDC_BUTTON_OUTPUT_TABLE,button,1342242816
+Control11=IDC_GRID_DIRTY_WATER,MFCGridCtrl,1342242816
+Control12=IDC_STATIC,static,1342308352
+Control13=IDC_TITLE,edit,1350631552
+Control14=IDC_STATIC,button,1342177287
+Control15=IDC_STATIC,static,1342308352
+Control16=IDC_STATIC,static,1342308352
+Control17=IDC_EDIT_TIME,edit,1350631552
+Control18=IDC_EDIT_WATER,edit,1350631552
+Control19=IDC_BUTTON_SHOW_SELECT,button,1342242816
+Control20=IDOK,button,1342242817
+Control21=IDCANCEL,button,1342242816
+
+[CLS:CDirtyWaterChart]
+Type=0
+HeaderFile=DirtyWaterChart.h
+ImplementationFile=DirtyWaterChart.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=CDirtyWaterChart
+
+[DLG:IDD_WATER_TEMP_CHART]
+Type=1
+Class=CWaterTempChart
+ControlCount=25
+Control1=IDC_STATIC,button,1342177287
+Control2=IDC_BUTTON_LOOKBACK,button,1342242816
+Control3=IDC_STATIC,button,1342177287
+Control4=IDC_STATIC,button,1342177287
+Control5=IDC_BUTTON_EDIT_RANGE,button,1342242816
+Control6=IDC_BUTTON_EDIT_ALRAM,button,1342242816
+Control7=IDC_RANGE_CHANGE,edit,1350631552
+Control8=IDC_ALARM_CHANGE,edit,1350631552
+Control9=IDC_BUTTON_CONFIRM,button,1342242816
+Control10=IDC_BUTTON_OUTPUT_TABLE,button,1342242816
+Control11=IDC_GRID_TEMP,MFCGridCtrl,1342242816
+Control12=IDC_STATIC,static,1342308352
+Control13=IDC_TITLE,edit,1350631552
+Control14=IDC_STATIC,button,1342177287
+Control15=IDC_STATIC,static,1342308352
+Control16=IDC_STATIC,static,1342308352
+Control17=IDC_EDIT_TIME,edit,1350631552
+Control18=IDC_EDIT_ENGINE,edit,1350631552
+Control19=IDC_BUTTON_SHOW_SELECT,button,1342242816
+Control20=IDC_STATIC,static,1342308352
+Control21=IDC_STATIC,static,1342308352
+Control22=IDC_EDIT_OUTSIDE,edit,1350631552
+Control23=IDC_EDIT_INSIDE,edit,1350631552
+Control24=IDOK,button,1342242817
+Control25=IDCANCEL,button,1342242816
+
+[CLS:CWaterTempChart]
+Type=0
+HeaderFile=WaterTempChart.h
+ImplementationFile=WaterTempChart.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=CWaterTempChart
 
