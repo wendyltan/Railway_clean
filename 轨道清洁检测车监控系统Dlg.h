@@ -1,5 +1,7 @@
 // 轨道清洁检测车监控系统Dlg.h : header file
 //
+//{{AFX_INCLUDES()
+//}}AFX_INCLUDES
 
 #if !defined(AFX_DLG_H__26DE1B04_27D5_4B4F_A8C1_C702549E8F54__INCLUDED_)
 #define AFX_DLG_H__26DE1B04_27D5_4B4F_A8C1_C702549E8F54__INCLUDED_
@@ -45,7 +47,6 @@ public:
 	CString	m_cleanWater;
 	CString	m_backWind1;
 	CString	m_backWind2;
-	CString	m_alarm;
 	CString	m_longitude;
 	CString	m_latitude;
 	CString	m_highpre;
@@ -71,7 +72,6 @@ protected:
 	afx_msg void OnAbout();
 	afx_msg void OnButtonOutsideTem();
 	afx_msg void OnButtonInsideTemp();
-	afx_msg void OnButtonVolt();
 	afx_msg void OnButtonWaterTemp();
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	afx_msg void OnTimer(UINT nIDEvent);
@@ -79,10 +79,15 @@ protected:
 	afx_msg void OnDirtyWater();
 	afx_msg void OnWaterTemp();
 	afx_msg void OnDestroy();
+	afx_msg void OnWindPre();
+	afx_msg void OnButtonVolt();
+	afx_msg void OnButtonWatchVideo();
+	afx_msg void OnButtonBeep();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 private:
 
+	//Dialog
 	COutsideTemDlg m_outsideTempDlg;
 	CInsideTempDlg m_insideTempDlg;
 	CVoltDlg m_voltDlg;
@@ -107,6 +112,19 @@ private:
 	_RecordsetPtr m_pCurrentset[7];
 	
 	double m_RecordNum;
+
+
+	//for alarm
+
+	CString m_AlarmTime;
+	CString m_AlarmArea;
+	CString m_AlarmCurrent;
+
+
+
+
+	
+
 
 
 

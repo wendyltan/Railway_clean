@@ -7,6 +7,8 @@
 #include "CleanWaterChart.h"
 #include "DirtyWaterChart.h"
 #include "WaterTempChart.h"
+#include "WindPreChart.h"
+#include "Video.h"
 
 #include "TeeInclude.h"
 
@@ -98,11 +100,13 @@ CMyDlg::CMyDlg(CWnd* pParent /*=NULL*/)
 	m_cleanWater = _T("");
 	m_backWind1 = _T("");
 	m_backWind2 = _T("");
-	m_alarm = "alarm text";
 	m_longitude = _T("");
 	m_latitude = _T("");
 	m_highpre = _T("");
 	m_lowpre = _T("");
+	m_AlarmTime = _T("");
+	m_AlarmArea = _T("");
+	m_AlarmCurrent = _T("");
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 
@@ -170,10 +174,6 @@ CMyDlg::CMyDlg(CWnd* pParent /*=NULL*/)
 	
 	DatabaseConnect();
 
-	
-	
-
-
 
 	
 
@@ -193,11 +193,14 @@ void CMyDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_CLEAN_WATER_TEXT, m_cleanWater);
 	DDX_Text(pDX, IDC_BACK_WIND_TEXT1, m_backWind1);
 	DDX_Text(pDX, IDC_BACK_WIND_TEXT2, m_backWind2);
-	DDX_Text(pDX, IDC_ALRAM_TEXT, m_alarm);
 	DDX_Text(pDX, IDC_LONGITUDE_TEXT, m_longitude);
 	DDX_Text(pDX, IDC_LATITUDE_TEXT, m_latitude);
 	DDX_Text(pDX, IDC_HIGH_WATER_PRE, m_highpre);
 	DDX_Text(pDX, IDC_LOW_WATER_PRE, m_lowpre);
+	DDX_Text(pDX, IDC_ALARM_TIME, m_AlarmTime);
+	DDX_Text(pDX, IDC_ALARM_CURRENT, m_AlarmCurrent);
+	DDX_Text(pDX, IDC_ALARM_AREA, m_AlarmArea);
+	
 	//}}AFX_DATA_MAP
 	DDX_Control(pDX,IDC_INSIDE_MAIN,m_iChart);
 	DDX_Control(pDX,IDC_OUTSIDE_MAIN,m_oChart);
@@ -214,14 +217,17 @@ BEGIN_MESSAGE_MAP(CMyDlg, CDialog)
 	ON_COMMAND(IDM_ABOUT, OnAbout)
 	ON_BN_CLICKED(IDC_BUTTON_OUTSIDE_TEM, OnButtonOutsideTem)
 	ON_BN_CLICKED(IDC_BUTTON_INSIDE_TEMP, OnButtonInsideTemp)
-	ON_BN_CLICKED(IDC_BUTTON_VOLT, OnButtonVolt)
 	ON_BN_CLICKED(IDC_BUTTON_WATER_TEMP, OnButtonWaterTemp)
 	ON_WM_CTLCOLOR()
 	ON_WM_TIMER()
 	ON_COMMAND(IDM_CLEAN_WATER, OnCleanWater)
-	ON_COMMAND(IDM_WATER_TEMP, OnWaterTemp)
 	ON_COMMAND(IDM_DIRTY_WATER, OnDirtyWater)
+	ON_COMMAND(IDM_WATER_TEMP, OnWaterTemp)
 	ON_WM_DESTROY()
+	ON_COMMAND(IDM_WIND_PRE, OnWindPre)
+	ON_BN_CLICKED(IDC_BUTTON_VOLT, OnButtonVolt)
+	ON_BN_CLICKED(IDC_BUTTON_WATCH_VIDEO, OnButtonWatchVideo)
+	ON_BN_CLICKED(IDC_BUTTON_BEEP, OnButtonBeep)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -263,11 +269,8 @@ BOOL CMyDlg::OnInitDialog()
 		m_pCurrentset[i] = JudgeType(i);
 	}
 
-
-	//SetTimer(1,1000,NULL);
 	
 	ReadTemp();
-
 
 	
 
@@ -352,7 +355,7 @@ void CMyDlg::OnButtonWaterTemp()
 
 void CMyDlg::OnButtonVolt()
 {
-
+ 
 	m_voltDlg.DoModal();
 
 }
@@ -389,7 +392,6 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 {
 	// TODO: Add your message handler code here and/or call default
 
-	
 
 	if(m_RecordNum==9) m_pCurrentset[4]->Move((long)m_RecordNum++);	
 	if(nIDEvent == 1)
@@ -406,7 +408,7 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 		}
 		else
 		{
-		  KillTimer(1);m_pCurrentset[4]->Close();MessageBox("END OF RECORD!");
+		  KillTimer(1);m_pCurrentset[4]->Close();//MessageBox("END OF RECORD!");
 		}
 	}
 	
@@ -428,7 +430,7 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			m_pCurrentset[0]->MoveNext();
 		}
 		else{
-			KillTimer(2);m_pCurrentset[0]->Close();MessageBox("END OF RECORD1!");
+			KillTimer(2);m_pCurrentset[0]->Close();//MessageBox("END OF RECORD1!");
 		}
 		  
 	
@@ -458,7 +460,7 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 
 		}
 		else{
-			KillTimer(3);m_pCurrentset[1]->Close();MessageBox("END OF RECORD2!");
+			KillTimer(3);m_pCurrentset[1]->Close();//MessageBox("END OF RECORD2!");
 		}
 
 		  
@@ -483,7 +485,7 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			m_pCurrentset[2]->MoveNext();
 		}
 		else{
-			KillTimer(4);m_pCurrentset[2]->Close();MessageBox("END OF RECORD3!");
+			KillTimer(4);m_pCurrentset[2]->Close();//MessageBox("END OF RECORD3!");
 		}
 
 		
@@ -506,7 +508,7 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			m_pCurrentset[3]->MoveNext();
 		}
 		else{
-			KillTimer(5);m_pCurrentset[3]->Close();MessageBox("END OF RECORD4!");
+			KillTimer(5);m_pCurrentset[3]->Close();//MessageBox("END OF RECORD4!");
 		}		
 							  
 	}
@@ -528,7 +530,7 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			m_pCurrentset[5]->MoveNext();
 		}
 		else{
-			KillTimer(6);m_pCurrentset[5]->Close();MessageBox("END OF RECORD5!");
+			KillTimer(6);m_pCurrentset[5]->Close();//MessageBox("END OF RECORD5!");
 		}		
 							  
 	}
@@ -550,7 +552,7 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			m_pCurrentset[6]->MoveNext();
 		}
 		else{
-			KillTimer(7);m_pCurrentset[6]->Close();MessageBox("END OF RECORD6!");
+			KillTimer(7);m_pCurrentset[6]->Close();//MessageBox("END OF RECORD6!");
 		}		
 		
 	}
@@ -584,6 +586,15 @@ void CMyDlg::OnWaterTemp()
 	// TODO: Add your command handler code here
 	CWaterTempChart wtc;
 	wtc.DoModal();
+	
+}
+
+
+void CMyDlg::OnWindPre() 
+{
+	// TODO: Add your command handler code here
+	CWindPreChart wpc;
+	wpc.DoModal();
 	
 }
 
@@ -854,4 +865,23 @@ void CMyDlg::dealTimer(int teeID,CString chartname)
 	CurTime+= tmSpan;
 	tchart->GetAxis().GetBottom().Scroll(1.0,TRUE);
    
+}
+
+
+
+
+void CMyDlg::OnButtonWatchVideo() 
+{
+	// TODO: Add your control notification handler code here
+	CVideo vlog;
+	vlog.DoModal();
+}
+
+
+
+//TESTING BEEP
+void CMyDlg::OnButtonBeep() 
+{
+	// TODO: Add your control notification handler code here
+	MessageBeep(MB_ICONASTERISK);
 }

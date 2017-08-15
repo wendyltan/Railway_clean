@@ -14,6 +14,7 @@ class CDirtyWaterChart : public CDialog
 {
 // Construction
 public:
+	void ShowData();
 	CDirtyWaterChart(CWnd* pParent = NULL);   // standard constructor
 	BOOL ChangeRecord();
 	BOOL ShowSelectRowInfo();

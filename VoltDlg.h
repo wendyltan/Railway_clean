@@ -9,7 +9,7 @@
 
 /////////////////////////////////////////////////////////////////////////////
 // CVoltDlg dialog
-
+#include "TeeInclude.h"
 class CVoltDlg : public CDialog
 {
 // Construction
@@ -22,7 +22,15 @@ public:
 		// NOTE: the ClassWizard will add data members here
 	//}}AFX_DATA
 
+private:
+	CTChart m_Chart;
 
+	_ConnectionPtr m_pConnection;
+	_RecordsetPtr m_pRecordset;
+	double m_RecordNum;
+
+	//record count
+	int count;
 // Overrides
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(CVoltDlg)
@@ -35,7 +43,9 @@ protected:
 
 	// Generated message map functions
 	//{{AFX_MSG(CVoltDlg)
-		// NOTE: the ClassWizard will add member functions here
+	virtual BOOL OnInitDialog();
+	afx_msg void OnDestroy();
+	afx_msg void OnTimer(UINT nIDEvent);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

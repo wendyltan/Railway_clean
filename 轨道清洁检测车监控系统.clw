@@ -2,13 +2,13 @@
 
 [General Info]
 Version=1
-LastClass=CWaterTempChart
+LastClass=CVideo
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "轨道清洁检测车监控系统.h"
 LastPage=0
 
-ClassCount=11
+ClassCount=13
 Class1=CCleanWaterChart
 Class2=CInsideTempDlg
 Class3=COilTemDlg
@@ -19,19 +19,23 @@ Class7=CMyApp
 Class8=CAboutDlg
 Class9=CMyDlg
 
-ResourceCount=10
+ResourceCount=12
 Resource1=IDD_ABOUTBOX
 Resource2=IDD_WATER_TEMP_CHART
-Resource3=IDD_DIALOG_VOLT
-Resource4=IDD_DIRTY_WATER_CHART
-Resource5=IDD_CLEAN_WATER_CHART
-Resource6=IDD_DIALOG_INSIDE_TEMP
-Resource7=IDD_DIALOG_WATER_TEMP
-Resource8=IDD_DIALOG_MAIN
+Resource3=IDD_DIALOG_INSIDE_TEMP
+Resource4=IDD_CLEAN_WATER_CHART
+Resource5=IDD_DIALOG_VOLT
+Resource6=IDD_DIALOG_VIDEO
+Resource7=IDD_DIALOG_PRE_CHART
+Resource8=IDD_DIRTY_WATER_CHART
 Class10=CDirtyWaterChart
-Resource9=IDD_DIALOG_OUTSIDE_TEM
+Resource9=IDD_DIALOG_WATER_TEMP
 Class11=CWaterTempChart
-Resource10=IDR_DIALOG_MENU
+Resource10=IDD_DIALOG_MAIN
+Class12=CWindPreChart
+Resource11=IDD_DIALOG_OUTSIDE_TEM
+Class13=CVideo
+Resource12=IDR_DIALOG_MENU
 
 [CLS:CCleanWaterChart]
 Type=0
@@ -71,6 +75,8 @@ Type=0
 BaseClass=CDialog
 HeaderFile=VoltDlg.h
 ImplementationFile=VoltDlg.cpp
+Filter=D
+VirtualFilter=dWC
 
 [CLS:CWaterTempDlg]
 Type=0
@@ -102,7 +108,7 @@ HeaderFile=轨道清洁检测车监控系统Dlg.h
 ImplementationFile=轨道清洁检测车监控系统Dlg.cpp
 Filter=D
 VirtualFilter=dWC
-LastObject=CMyDlg
+LastObject=IDC_OCX_PLAYER
 
 [DLG:IDD_CLEAN_WATER_CHART]
 Type=1
@@ -153,9 +159,10 @@ Control3=IDC_OUTSIDE_TEMP,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
 [DLG:IDD_DIALOG_VOLT]
 Type=1
 Class=CVoltDlg
-ControlCount=2
+ControlCount=3
 Control1=IDOK,button,1342242817
 Control2=IDCANCEL,button,1342242816
+Control3=IDC_VOLT,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
 
 [DLG:IDD_DIALOG_WATER_TEMP]
 Type=1
@@ -187,16 +194,15 @@ Command3=IDM_ABOUT
 Command4=IDM_CLEAN_WATER
 Command5=IDM_DIRTY_WATER
 Command6=IDM_WATER_TEMP
-Command7=IDM_OUTSIDE_TEMP
-Command8=IDM_WIND_PRE
-CommandCount=8
+Command7=IDM_WIND_PRE
+CommandCount=7
 
 [DLG:IDD_DIALOG_MAIN]
 Type=1
 Class=CMyDlg
-ControlCount=44
+ControlCount=50
 Control1=IDC_STATIC,button,1342177287
-Control2=IDC_ALRAM_TEXT,static,1342308352
+Control2=IDC_ALARM_AREA,static,1342308352
 Control3=IDC_STATIC,button,1342177287
 Control4=IDC_BUTTON_WATER_TEMP,button,1342251008
 Control5=IDC_BUTTON_OUTSIDE_TEM,button,1342251008
@@ -225,7 +231,7 @@ Control27=IDC_STATIC,static,1342308352
 Control28=IDC_LOW_WATER_PRE,static,1342308352
 Control29=IDC_HIGH_WATER_PRE,static,1342308352
 Control30=IDC_STATIC,button,1342177287
-Control31=IDC_BUTTON_VOLT,button,1342242816
+Control31=IDC_BUTTON_VOLT,button,1342251776
 Control32=IDC_STATIC,static,1342308352
 Control33=IDC_STATIC,static,1342308352
 Control34=IDC_LONGITUDE_TEXT,static,1342308352
@@ -239,6 +245,12 @@ Control41=IDC_WATER_MAIN,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
 Control42=IDC_STATIC,button,1342177287
 Control43=IDC_INSIDE_MAIN,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
 Control44=IDC_OUTSIDE_MAIN,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
+Control45=IDC_BUTTON_WATCH_VIDEO,button,1342242816
+Control46=IDC_ALARM_TIME,static,1342308352
+Control47=IDC_ALARM_CURRENT,static,1342308352
+Control48=IDC_STATIC,static,1342308352
+Control49=IDC_VOLT,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
+Control50=IDC_BUTTON_BEEP,button,1342242816
 
 [DLG:IDD_DIRTY_WATER_CHART]
 Type=1
@@ -311,4 +323,59 @@ ImplementationFile=WaterTempChart.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=CWaterTempChart
+
+[DLG:IDD_DIALOG_PRE_CHART]
+Type=1
+Class=CWindPreChart
+ControlCount=25
+Control1=IDC_STATIC,button,1342177287
+Control2=IDC_BUTTON_LOOKBACK,button,1342242816
+Control3=IDC_STATIC,button,1342177287
+Control4=IDC_STATIC,button,1342177287
+Control5=IDC_BUTTON_EDIT_RANGE,button,1342242816
+Control6=IDC_BUTTON_EDIT_ALRAM,button,1342242816
+Control7=IDC_RANGE_CHANGE,edit,1350631552
+Control8=IDC_ALARM_CHANGE,edit,1350631552
+Control9=IDC_BUTTON_CONFIRM,button,1342242816
+Control10=IDC_BUTTON_OUTPUT_TABLE,button,1342242816
+Control11=IDC_GRID_PRE,MFCGridCtrl,1342242816
+Control12=IDC_STATIC,static,1342308352
+Control13=IDC_TITLE,edit,1350631552
+Control14=IDC_STATIC,button,1342177287
+Control15=IDC_STATIC,static,1342308352
+Control16=IDC_STATIC,static,1342308352
+Control17=IDC_EDIT_TIME,edit,1350631552
+Control18=IDC_EDIT_FRONT_PRE,edit,1350631552
+Control19=IDC_BUTTON_SHOW_SELECT,button,1342242816
+Control20=IDC_STATIC,static,1342308352
+Control21=IDC_STATIC,static,1342308352
+Control22=IDC_EDIT_BACK_PRE1,edit,1350631552
+Control23=IDC_EDIT_BACK_PRE2,edit,1350631552
+Control24=IDOK,button,1342242817
+Control25=IDCANCEL,button,1342242816
+
+[CLS:CWindPreChart]
+Type=0
+HeaderFile=WindPreChart.h
+ImplementationFile=WindPreChart.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=CWindPreChart
+
+[DLG:IDD_DIALOG_VIDEO]
+Type=1
+Class=CVideo
+ControlCount=4
+Control1=IDC_OCX_PLAYER,{6BF52A52-394A-11D3-B153-00C04F79FAA6},1342177280
+Control2=IDC_BUTTON_OPEN,button,1342242816
+Control3=IDC_BUTTON_PLAY,button,1342242816
+Control4=IDC_BUTTON_CLOSE,button,1342242816
+
+[CLS:CVideo]
+Type=0
+HeaderFile=Video.h
+ImplementationFile=Video.cpp
+BaseClass=CDialog
+Filter=D
+VirtualFilter=dWC
 

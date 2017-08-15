@@ -10,6 +10,7 @@
 #define IDR_MAINFRAME                   128
 #define IDR_DIALOG_MENU                 129
 #define IDD_DIALOG_WIND_PRE             131
+#define IDD_DIALOG_PRE_CHART            131
 #define IDD_DIALOG_OIL_TEM              133
 #define IDD_DIALOG_OUTSIDE_TEM          134
 #define IDD_DIALOG_CLEAN_WATER_BOX      135
@@ -20,10 +21,12 @@
 #define IDD_DIALOG_VOLT                 145
 #define IDD_DIRTY_WATER_CHART           154
 #define IDD_WATER_TEMP_CHART            155
+#define IDD_DIALOG_VIDEO                158
 #define IDC_EDIT_WIND_PRE               1005
 #define IDC_BUTTON_WINDPRE              1007
 #define IDC_BUTTON_OILPRE               1008
 #define IDC_ALRAM_TEXT                  1009
+#define IDC_ALARM_AREA                  1009
 #define IDC_EDIT_OUTSIDE_TEM            1010
 #define IDC_EDIT_OIL_TEM                1011
 #define IDC_BUTTON_OIL_TEM              1012
@@ -55,15 +58,20 @@
 #define IDC_BUTTON1                     1036
 #define IDC_BUTTON_LOOKBACK             1036
 #define IDC_BUTTON_SHOW                 1036
+#define IDC_BUTTON_OPEN                 1036
+#define IDC_BUTTON_BEEP                 1036
 #define IDC_BUTTON2                     1037
 #define IDC_BUTTON_CURRENT_RANGE        1037
 #define IDC_BUTTON_SHOW_SELECT          1037
+#define IDC_BUTTON_PLAY                 1037
 #define IDC_BUTTON3                     1038
 #define IDC_BUTTON_ALRAM                1038
 #define IDC_EDIT_OUTSIDE                1038
+#define IDC_BUTTON_CLOSE                1038
 #define IDC_EDIT_INSIDE                 1039
 #define IDC_BUTTON4                     1040
 #define IDC_BUTTON_EDIT_RANGE           1040
+#define IDC_BUTTON_WATCH_VIDEO          1040
 #define IDC_BUTTON5                     1041
 #define IDC_BUTTON_EDIT_ALRAM           1041
 #define IDC_BUTTON6                     1042
@@ -93,6 +101,13 @@
 #define IDC_OUTSIDE_MAIN                1072
 #define IDC_EDIT_ENGINE                 1072
 #define IDC_GRID_TEMP                   1073
+#define IDC_GRID_PRE                    1075
+#define IDC_EDIT_FRONT_PRE              1076
+#define IDC_EDIT_BACK_PRE1              1077
+#define IDC_EDIT_BACK_PRE2              1078
+#define IDC_OCX_PLAYER                  1080
+#define IDC_ALARM_TIME                  1081
+#define IDC_ALARM_CURRENT               1082
 #define IDM_LOOKBACK                    32771
 #define IDM_CURRANGE                    32772
 #define IDM_ALRAMHIS                    32773
@@ -113,9 +128,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        156
+#define _APS_NEXT_RESOURCE_VALUE        160
 #define _APS_NEXT_COMMAND_VALUE         32785
-#define _APS_NEXT_CONTROL_VALUE         1074
+#define _APS_NEXT_CONTROL_VALUE         1083
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

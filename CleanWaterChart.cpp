@@ -171,45 +171,8 @@ void CCleanWaterChart::OnButtonLookback()
 		
 	if(m_buttonlookbackClick==0){
 
-		CString str;
+		ShowData();
 
- 		
- 		//让等列不能编辑
- 		for (int row = m_CleanWaterGrid.GetFixedRowCount(); row < m_CleanWaterGrid.GetRowCount(); row++)
-		{
- 			for (int col =m_CleanWaterGrid.GetFixedColumnCount(); col < m_CleanWaterGrid.GetColumnCount(); col++)
-			{
- 				m_CleanWaterGrid.SetItemState(row,col,m_CleanWaterGrid.GetItemState(row,col) | GVIS_READONLY);
- 			}
- 		}
- 
- 
- 		int nRow = 1;
-		while(!m_pRecordset->adoEOF)
- 		{
-			
-			//序号
-			str.Format("%d",nRow);
-			m_CleanWaterGrid.SetItemText(nRow,m_nIDCol,str);
-				
- 			
-			//时间
- 			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("时间"));
- 			m_CleanWaterGrid.SetItemText(nRow,m_nTimeCol,str);
-		
- 			//水位
-			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("清水箱水位"));
- 			m_CleanWaterGrid.SetItemText(nRow,m_nWaterCol,str);
- 
- 			
- 			nRow++;
-			m_pRecordset->MoveNext();
- 		}
-		m_nCurCol = nRow;//表格总行数
-
-		m_pRecordset->Close();
-		m_CleanWaterGrid.Invalidate();
-		m_buttonlookbackClick++;
 	}
 	else
 	{
@@ -420,6 +383,7 @@ void CCleanWaterChart::OnButtonEditAlram()
 
 BOOL CCleanWaterChart::ChangeRecord()
 {
+	m_pRecordset.CreateInstance(__uuidof(Recordset));
 	CString strSQL="SELECT * FROM 清水箱表";
 	try
 	{
@@ -447,29 +411,31 @@ BOOL CCleanWaterChart::ChangeRecord()
 		 return FALSE;
 	 }
 	 UpdateData(FALSE);
-	 /*
-	 int pos   = m_Grid.GetSelectionMark();    
-	 ADO m_Ado;         
-	 m_Ado.OnInitADOConn();       
-	 CString sql = "select * from employees";     
-	 m_Ado.m_pRecordset = m_Ado.OpenRecordset(sql);  
-	 */
+
 	 try
 	 {
-		  m_pRecordset->Move(m_nSelRow,vtMissing); 
+		  m_nSelRow--;
+		  m_pRecordset->Move(m_nSelRow); 
 		
-		  m_pRecordset->PutCollect("时间",(_bstr_t)m_nTime);
-		  m_pRecordset->PutCollect("清水箱水位",(_bstr_t)m_nWater);
-		  m_pRecordset->Update();     
-		  m_pRecordset->Close(); 
+		  m_pRecordset->PutCollect("时间",_variant_t(m_nTime));
+		  m_pRecordset->PutCollect("清水箱水位",_variant_t(m_nWater));
+
+		  m_nSelRow++;
+
+		  m_CleanWaterGrid.SetItemText(m_nSelRow,m_nTimeCol,m_nTime);
+		  m_CleanWaterGrid.SetItemText(m_nSelRow,m_nWaterCol,m_nWater);
 		  m_CleanWaterGrid.Invalidate();
+
+		  m_pRecordset->Update();     
+		  m_pRecordset->Close();
+		  
 	 }
 	 catch(...)             
 	 {
 	  MessageBox("操作失败");        
 	  return FALSE;
 	 }
-	 MessageBox("修改成功");         
+	 MessageBox("修改成功"); 
 	return TRUE;
 }
 
@@ -497,4 +463,48 @@ void CCleanWaterChart::OnButtonShowSelect()
 		ShowSelectRowInfo();
 	}
 
+}
+
+void CCleanWaterChart::ShowData()
+{
+	
+		CString str;
+
+ 		
+ 		//让等列不能编辑
+ 		for (int row = m_CleanWaterGrid.GetFixedRowCount(); row < m_CleanWaterGrid.GetRowCount(); row++)
+		{
+ 			for (int col =m_CleanWaterGrid.GetFixedColumnCount(); col < m_CleanWaterGrid.GetColumnCount(); col++)
+			{
+ 				m_CleanWaterGrid.SetItemState(row,col,m_CleanWaterGrid.GetItemState(row,col) | GVIS_READONLY);
+ 			}
+ 		}
+ 
+ 
+ 		int nRow = 1;
+		while(!m_pRecordset->adoEOF)
+ 		{
+			
+			//序号
+			str.Format("%d",nRow);
+			m_CleanWaterGrid.SetItemText(nRow,m_nIDCol,str);
+				
+ 			
+			//时间
+ 			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("时间"));
+ 			m_CleanWaterGrid.SetItemText(nRow,m_nTimeCol,str);
+		
+ 			//水位
+			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("清水箱水位"));
+ 			m_CleanWaterGrid.SetItemText(nRow,m_nWaterCol,str);
+ 
+ 			
+ 			nRow++;
+			m_pRecordset->MoveNext();
+ 		}
+		m_nCurCol = nRow;//表格总行数
+
+		m_pRecordset->Close();
+		m_CleanWaterGrid.Invalidate();
+		m_buttonlookbackClick++;
 }

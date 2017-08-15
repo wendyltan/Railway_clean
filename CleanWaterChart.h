@@ -14,6 +14,7 @@ class CCleanWaterChart : public CDialog
 {
 // Construction
 public:
+	void ShowData();
 	BOOL ChangeRecord();
 	BOOL ShowSelectRowInfo();
 	void GridInit();

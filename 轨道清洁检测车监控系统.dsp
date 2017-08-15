@@ -124,6 +124,18 @@ SOURCE=.\GridCtrl\TitleTip.cpp
 
 SOURCE=.\CleanWaterChart.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=.\DirtyWaterChart.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\WaterTempChart.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\WindPreChart.cpp
+# End Source File
 # End Group
 # Begin Group "excel"
 
@@ -670,14 +682,82 @@ SOURCE=.\TeeChart\xmlexport.cpp
 SOURCE=.\TeeChart\zoom.cpp
 # End Source File
 # End Group
+# Begin Group "Video source"
+
+# PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\DirtyWaterChart.cpp
+SOURCE=.\Video.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\WaterTempChart.cpp
+SOURCE=.\Player\wmpcdrom.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpcdromcollection.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpclosedcaption.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpcontrols.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpdvd.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmperror.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmperroritem.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpmedia.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpmediacollection.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpnetwork.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplayer4.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplayerapplication.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplaylist.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplaylistarray.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplaylistcollection.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpsettings.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpstringcollection.cpp
+# End Source File
+# End Group
 # End Group
 # Begin Group "Header Files"
 
@@ -724,6 +804,18 @@ SOURCE=.\GridCtrl\TitleTip.h
 # Begin Source File
 
 SOURCE=.\CleanWaterChart.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\DirtyWaterChart.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\WaterTempChart.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\WindPreChart.h
 # End Source File
 # End Group
 # Begin Group "excel header"
@@ -1278,17 +1370,81 @@ SOURCE=.\TeeChart\xmlexport.h
 SOURCE=.\TeeChart\zoom.h
 # End Source File
 # End Group
+# Begin Group "Video header"
+
+# PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\DirtyWaterChart.h
+SOURCE=.\Video.h
 # End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpcdrom.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpcdromcollection.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpclosedcaption.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpcontrols.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpdvd.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmperror.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpmedia.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpmediacollection.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpnetwork.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplayer4.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplayerapplication.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplaylist.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplaylistarray.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpplaylistcollection.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpsettings.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Player\wmpstringcollection.h
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=.\TeeInclude.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\WaterTempChart.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
@@ -1313,90 +1469,10 @@ SOURCE=.\ReadMe.txt
 # End Source File
 # End Target
 # End Project
-# Section 轨道清洁检测车监控系统 : {B6C10504-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CBezierSeries
-# 	2:10:HeaderFile:bezierseries1.h
-# 	2:8:ImplFile:bezierseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C104AF-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CValueList
-# 	2:10:HeaderFile:valuelist1.h
-# 	2:8:ImplFile:valuelist1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C104E8-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CCurveFittingFunction
-# 	2:10:HeaderFile:curvefittingfunction1.h
-# 	2:8:ImplFile:curvefittingfunction1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C104BF-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CAreaSeries
-# 	2:10:HeaderFile:areaseries1.h
-# 	2:8:ImplFile:areaseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B86AE373-50DC-4AE9-8872-8E3F9FC21A4E}
-# 	2:5:Class:CMACDFunction
-# 	2:10:HeaderFile:macdfunction1.h
-# 	2:8:ImplFile:macdfunction1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {449C6526-C2F8-47EE-8386-32D20B488B8B}
-# 	2:5:Class:CCursorTool
-# 	2:10:HeaderFile:cursortool1.h
-# 	2:8:ImplFile:cursortool1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {70C80BD0-D36A-46C9-A9D6-AE8687CA0EA5}
-# 	2:5:Class:CHistogramSeries
-# 	2:10:HeaderFile:histogramseries1.h
-# 	2:8:ImplFile:histogramseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C104A3-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CScroll
-# 	2:10:HeaderFile:scroll1.h
-# 	2:8:ImplFile:scroll1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C1050B-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CPolarSeries
-# 	2:10:HeaderFile:polarseries1.h
-# 	2:8:ImplFile:polarseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C104DF-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CErrorBarSeries
-# 	2:10:HeaderFile:errorbarseries1.h
-# 	2:8:ImplFile:errorbarseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C10534-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CTeePoint3D
-# 	2:10:HeaderFile:teepoint3d1.h
-# 	2:8:ImplFile:teepoint3d1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {3752717C-15C0-4C15-9532-C9C371388028}
-# 	2:5:Class:CADXFunction
-# 	2:10:HeaderFile:adxfunction1.h
-# 	2:8:ImplFile:adxfunction1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {750EB847-B333-4A73-8AEE-9087F8B98D1E}
-# 	2:5:Class:CToolList
-# 	2:10:HeaderFile:toollist1.h
-# 	2:8:ImplFile:toollist1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C104AA-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CPage
-# 	2:10:HeaderFile:page1.h
-# 	2:8:ImplFile:page1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {235FB744-F8ED-11D4-93C8-006008A7EED4}
-# 	2:5:Class:CPNGExport
-# 	2:10:HeaderFile:pngexport1.h
-# 	2:8:ImplFile:pngexport1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C1053B-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CImageBarSeries
-# 	2:10:HeaderFile:imagebarseries1.h
-# 	2:8:ImplFile:imagebarseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C10497-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CImport
-# 	2:10:HeaderFile:import1.h
-# 	2:8:ImplFile:import1.cpp
+# Section 轨道清洁检测车监控系统 : {B6C10508-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CSurfaceSeries
+# 	2:10:HeaderFile:surfaceseries1.h
+# 	2:8:ImplFile:surfaceseries1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {B6C104EA-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CMovingAvgFunction
@@ -1408,20 +1484,15 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:strings1.h
 # 	2:8:ImplFile:strings1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {FDB6AE9B-AE83-4CC3-AC6D-03CF0E133867}
-# 	2:5:Class:CPyramidSeries
-# 	2:10:HeaderFile:pyramidseries1.h
-# 	2:8:ImplFile:pyramidseries1.cpp
-# End Section
 # Section 轨道清洁检测车监控系统 : {C9F8E464-0B4B-4427-8678-363CF8E1955D}
 # 	2:5:Class:CColorBandTool
 # 	2:10:HeaderFile:colorbandtool1.h
 # 	2:8:ImplFile:colorbandtool1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {5970102E-E487-4B12-88A8-A7930EF23E5D}
-# 	2:5:Class:CDrawLineTool
-# 	2:10:HeaderFile:drawlinetool1.h
-# 	2:8:ImplFile:drawlinetool1.cpp
+# Section 轨道清洁检测车监控系统 : {235FB74B-F8ED-11D4-93C8-006008A7EED4}
+# 	2:5:Class:CPCXExport
+# 	2:10:HeaderFile:pcxexport1.h
+# 	2:8:ImplFile:pcxexport1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {4CC67466-2A11-45C6-924E-15E8B9F6B780}
 # 	2:5:Class:CWaterfallSeries
@@ -1438,35 +1509,30 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:rmsfunction1.h
 # 	2:8:ImplFile:rmsfunction1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C10508-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CSurfaceSeries
-# 	2:10:HeaderFile:surfaceseries1.h
-# 	2:8:ImplFile:surfaceseries1.cpp
+# Section 轨道清洁检测车监控系统 : {B6C104AE-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CMarks
+# 	2:10:HeaderFile:marks1.h
+# 	2:8:ImplFile:marks1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {235FB74B-F8ED-11D4-93C8-006008A7EED4}
-# 	2:5:Class:CPCXExport
-# 	2:10:HeaderFile:pcxexport1.h
-# 	2:8:ImplFile:pcxexport1.cpp
+# Section 轨道清洁检测车监控系统 : {5970102E-E487-4B12-88A8-A7930EF23E5D}
+# 	2:5:Class:CDrawLineTool
+# 	2:10:HeaderFile:drawlinetool1.h
+# 	2:8:ImplFile:drawlinetool1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {B6C104A7-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CWalls
 # 	2:10:HeaderFile:walls1.h
 # 	2:8:ImplFile:walls1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {AC690ACD-0730-11D5-93E3-006008A7EED4}
-# 	2:5:Class:CNativeExport
-# 	2:10:HeaderFile:nativeexport1.h
-# 	2:8:ImplFile:nativeexport1.cpp
-# End Section
 # Section 轨道清洁检测车监控系统 : {B6C10538-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CTeeOpenGL
 # 	2:10:HeaderFile:teeopengl1.h
 # 	2:8:ImplFile:teeopengl1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C104AE-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CMarks
-# 	2:10:HeaderFile:marks1.h
-# 	2:8:ImplFile:marks1.cpp
+# Section 轨道清洁检测车监控系统 : {AC690ACD-0730-11D5-93E3-006008A7EED4}
+# 	2:5:Class:CNativeExport
+# 	2:10:HeaderFile:nativeexport1.h
+# 	2:8:ImplFile:nativeexport1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {A841A3E5-3ED7-11D5-943D-006008A7EED4}
 # 	2:5:Class:CValueLists
@@ -1498,10 +1564,15 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:seriesmarkposition1.h
 # 	2:8:ImplFile:seriesmarkposition1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C1053A-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CWindRoseSeries
-# 	2:10:HeaderFile:windroseseries1.h
-# 	2:8:ImplFile:windroseseries1.cpp
+# Section 轨道清洁检测车监控系统 : {CB0CE331-76CB-449C-9BE7-FB69C03C3439}
+# 	2:5:Class:CHorizBoxPlotSeries
+# 	2:10:HeaderFile:horizboxplotseries1.h
+# 	2:8:ImplFile:horizboxplotseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {AC690AD1-0730-11D5-93E3-006008A7EED4}
+# 	2:5:Class:CXMLExport
+# 	2:10:HeaderFile:xmlexport1.h
+# 	2:8:ImplFile:xmlexport1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {BA3A0E2D-CCE7-4CF6-82D2-044B2A64EE59}
 # 	2:5:Class:CColorGridSeries
@@ -1518,15 +1589,10 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:bmpexport1.h
 # 	2:8:ImplFile:bmpexport1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {CB0CE331-76CB-449C-9BE7-FB69C03C3439}
-# 	2:5:Class:CHorizBoxPlotSeries
-# 	2:10:HeaderFile:horizboxplotseries1.h
-# 	2:8:ImplFile:horizboxplotseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {AC690AD1-0730-11D5-93E3-006008A7EED4}
-# 	2:5:Class:CXMLExport
-# 	2:10:HeaderFile:xmlexport1.h
-# 	2:8:ImplFile:xmlexport1.cpp
+# Section 轨道清洁检测车监控系统 : {B6C1053A-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CWindRoseSeries
+# 	2:10:HeaderFile:windroseseries1.h
+# 	2:8:ImplFile:windroseseries1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {235FB753-F8ED-11D4-93C8-006008A7EED4}
 # 	2:5:Class:CMarksTipTool
@@ -1538,6 +1604,11 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:export1.h
 # 	2:8:ImplFile:export1.cpp
 # End Section
+# Section 轨道清洁检测车监控系统 : {40897764-CEAB-47BE-AD4A-8E28537F9BBF}
+# 	2:5:Class:CWMPPlayerApplication
+# 	2:10:HeaderFile:wmpplayerapplication.h
+# 	2:8:ImplFile:wmpplayerapplication.cpp
+# End Section
 # Section 轨道清洁检测车监控系统 : {3B2B9817-FBBF-11D4-93CA-006008A7EED4}
 # 	2:5:Class:CTitles
 # 	2:10:HeaderFile:titles1.h
@@ -1547,6 +1618,15 @@ SOURCE=.\ReadMe.txt
 # 	2:5:Class:CBrush1
 # 	2:10:HeaderFile:brush1.h
 # 	2:8:ImplFile:brush1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104A6-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CWall
+# 	2:10:HeaderFile:wall1.h
+# 	2:8:ImplFile:wall1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {6BF52A52-394A-11D3-B153-00C04F79FAA6}
+# 	2:21:DefaultSinkHeaderFile:wmpplayer4.h
+# 	2:16:DefaultSinkClass:CWMPPlayer4
 # End Section
 # Section 轨道清洁检测车监控系统 : {B6C10491-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CAxes
@@ -1558,10 +1638,20 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:point3dseries1.h
 # 	2:8:ImplFile:point3dseries1.cpp
 # End Section
+# Section 轨道清洁检测车监控系统 : {9104D1AB-80C9-4FED-ABF0-2E6417A6DF14}
+# 	2:5:Class:CWMPSettings
+# 	2:10:HeaderFile:wmpsettings.h
+# 	2:8:ImplFile:wmpsettings.cpp
+# End Section
 # Section 轨道清洁检测车监控系统 : {2DCBF4FF-BEDF-4140-B726-70996BB2B6E6}
 # 	2:5:Class:CBollingerFunction
 # 	2:10:HeaderFile:bollingerfunction1.h
 # 	2:8:ImplFile:bollingerfunction1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {AC690AD5-0730-11D5-93E3-006008A7EED4}
+# 	2:5:Class:CHTMLExport
+# 	2:10:HeaderFile:htmlexport1.h
+# 	2:8:ImplFile:htmlexport1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {22A5D9BB-B643-11D5-94F8-006008A7EED4}
 # 	2:5:Class:CTeeShapePanel
@@ -1577,16 +1667,6 @@ SOURCE=.\ReadMe.txt
 # 	2:5:Class:CStdDeviationFunction
 # 	2:10:HeaderFile:stddeviationfunction1.h
 # 	2:8:ImplFile:stddeviationfunction1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {AC690AD5-0730-11D5-93E3-006008A7EED4}
-# 	2:5:Class:CHTMLExport
-# 	2:10:HeaderFile:htmlexport1.h
-# 	2:8:ImplFile:htmlexport1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C104A6-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CWall
-# 	2:10:HeaderFile:wall1.h
-# 	2:8:ImplFile:wall1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {01E6D0D8-07EE-11D5-93E4-006008A7EED4}
 # 	2:5:Class:CFunnelSeries
@@ -1613,6 +1693,16 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:pointer1.h
 # 	2:8:ImplFile:pointer1.cpp
 # End Section
+# Section 轨道清洁检测车监控系统 : {01E6D0DA-07EE-11D5-93E4-006008A7EED4}
+# 	2:5:Class:CCalendarSeries
+# 	2:10:HeaderFile:calendarseries1.h
+# 	2:8:ImplFile:calendarseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {A12DCF7D-14AB-4C1B-A8CD-63909F06025B}
+# 	2:5:Class:CWMPError
+# 	2:10:HeaderFile:wmperror.h
+# 	2:8:ImplFile:wmperror.cpp
+# End Section
 # Section 轨道清洁检测车监控系统 : {B6C104ED-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CPieOtherSlice
 # 	2:10:HeaderFile:pieotherslice1.h
@@ -1628,30 +1718,15 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:donutseries1.h
 # 	2:8:ImplFile:donutseries1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C10485-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CTChart
-# 	2:10:HeaderFile:tchart1.h
-# 	2:8:ImplFile:tchart1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {01E6D0DA-07EE-11D5-93E4-006008A7EED4}
-# 	2:5:Class:CCalendarSeries
-# 	2:10:HeaderFile:calendarseries1.h
-# 	2:8:ImplFile:calendarseries1.cpp
-# End Section
 # Section 轨道清洁检测车监控系统 : {C793DB5D-E235-4248-87AD-E436822E64F2}
 # 	2:5:Class:CHorizLineSeries
 # 	2:10:HeaderFile:horizlineseries1.h
 # 	2:8:ImplFile:horizlineseries1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C10506-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CErrorSeries
-# 	2:10:HeaderFile:errorseries1.h
-# 	2:8:ImplFile:errorseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {97763CEC-4D57-4612-A799-05C6E19AC789}
-# 	2:5:Class:CRotateTool
-# 	2:10:HeaderFile:rotatetool1.h
-# 	2:8:ImplFile:rotatetool1.cpp
+# Section 轨道清洁检测车监控系统 : {B6C10485-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CTChart
+# 	2:10:HeaderFile:tchart1.h
+# 	2:8:ImplFile:tchart1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {B6C10490-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CAspect
@@ -1678,10 +1753,60 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:mapseries1.h
 # 	2:8:ImplFile:mapseries1.cpp
 # End Section
+# Section 轨道清洁检测车监控系统 : {97763CEC-4D57-4612-A799-05C6E19AC789}
+# 	2:5:Class:CRotateTool
+# 	2:10:HeaderFile:rotatetool1.h
+# 	2:8:ImplFile:rotatetool1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104C5-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CBubbleSeries
+# 	2:10:HeaderFile:bubbleseries1.h
+# 	2:8:ImplFile:bubbleseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {D5F0F4F1-130C-11D3-B14E-00C04F79FAA6}
+# 	2:5:Class:CWMPPlaylist
+# 	2:10:HeaderFile:wmpplaylist.h
+# 	2:8:ImplFile:wmpplaylist.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {4F2DF574-C588-11D3-9ED0-00C04FB6E937}
+# 	2:5:Class:CWMPClosedCaption
+# 	2:10:HeaderFile:wmpclosedcaption.h
+# 	2:8:ImplFile:wmpclosedcaption.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C10506-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CErrorSeries
+# 	2:10:HeaderFile:errorseries1.h
+# 	2:8:ImplFile:errorseries1.cpp
+# End Section
 # Section 轨道清洁检测车监控系统 : {B6C104A5-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CPrinter
 # 	2:10:HeaderFile:printer1.h
 # 	2:8:ImplFile:printer1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {0B304B42-253F-4221-8C87-8AD1FCA76C94}
+# 	2:5:Class:CContourLevel
+# 	2:10:HeaderFile:contourlevel1.h
+# 	2:8:ImplFile:contourlevel1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {CC476B13-71AC-463F-85E4-0AA8DD8B8BDE}
+# 	2:5:Class:CLegendSymbol
+# 	2:10:HeaderFile:legendsymbol1.h
+# 	2:8:ImplFile:legendsymbol1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {EE4C8FE2-34B2-11D3-A3BF-006097C9B344}
+# 	2:5:Class:CWMPCdromCollection
+# 	2:10:HeaderFile:wmpcdromcollection.h
+# 	2:8:ImplFile:wmpcdromcollection.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {5B9827E5-3BE4-4DA3-9A6F-611BF900E4E1}
+# 	2:5:Class:CTriSurfaceSeries
+# 	2:10:HeaderFile:trisurfaceseries1.h
+# 	2:8:ImplFile:trisurfaceseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104C0-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CPointSeries
+# 	2:10:HeaderFile:pointseries1.h
+# 	2:8:ImplFile:pointseries1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {B6C10501-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CExplodedSlices
@@ -1693,11 +1818,6 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:series1.h
 # 	2:8:ImplFile:series1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C104C5-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CBubbleSeries
-# 	2:10:HeaderFile:bubbleseries1.h
-# 	2:8:ImplFile:bubbleseries1.cpp
-# End Section
 # Section 轨道清洁检测车监控系统 : {E517CB25-1C48-11D5-9400-006008A7EED4}
 # 	2:5:Class:CCalendarCell
 # 	2:10:HeaderFile:calendarcell1.h
@@ -1707,16 +1827,6 @@ SOURCE=.\ReadMe.txt
 # 	2:5:Class:CMapPolygon
 # 	2:10:HeaderFile:mappolygon1.h
 # 	2:8:ImplFile:mappolygon1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {0B304B42-253F-4221-8C87-8AD1FCA76C94}
-# 	2:5:Class:CContourLevel
-# 	2:10:HeaderFile:contourlevel1.h
-# 	2:8:ImplFile:contourlevel1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {CC476B13-71AC-463F-85E4-0AA8DD8B8BDE}
-# 	2:5:Class:CLegendSymbol
-# 	2:10:HeaderFile:legendsymbol1.h
-# 	2:8:ImplFile:legendsymbol1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {235FB746-F8ED-11D4-93C8-006008A7EED4}
 # 	2:5:Class:CGIFExport
@@ -1732,10 +1842,10 @@ SOURCE=.\ReadMe.txt
 # 	2:21:DefaultSinkHeaderFile:tchart1.h
 # 	2:16:DefaultSinkClass:CTChart
 # End Section
-# Section 轨道清洁检测车监控系统 : {DFBF9393-46FD-11D2-AEC3-00400141862D}
-# 	2:5:Class:CContourSeries
-# 	2:10:HeaderFile:contourseries1.h
-# 	2:8:ImplFile:contourseries1.cpp
+# Section 轨道清洁检测车监控系统 : {3614C646-3B3B-4DE7-A81E-930E3F2127B3}
+# 	2:5:Class:CWMPErrorItem
+# 	2:10:HeaderFile:wmperroritem.h
+# 	2:8:ImplFile:wmperroritem.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {2EB35E28-80CF-4F35-9B6B-427E2AC1BFA6}
 # 	2:5:Class:CNearestTool
@@ -1747,15 +1857,20 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:candleseries1.h
 # 	2:8:ImplFile:candleseries1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {5B9827E5-3BE4-4DA3-9A6F-611BF900E4E1}
-# 	2:5:Class:CTriSurfaceSeries
-# 	2:10:HeaderFile:trisurfaceseries1.h
-# 	2:8:ImplFile:trisurfaceseries1.cpp
+# Section 轨道清洁检测车监控系统 : {B6C1048B-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CPen1
+# 	2:10:HeaderFile:pen1.h
+# 	2:8:ImplFile:pen1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C104C0-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CPointSeries
-# 	2:10:HeaderFile:pointseries1.h
-# 	2:8:ImplFile:pointseries1.cpp
+# Section 轨道清洁检测车监控系统 : {94D55E95-3FAC-11D3-B155-00C04F79FAA6}
+# 	2:5:Class:CWMPMedia
+# 	2:10:HeaderFile:wmpmedia.h
+# 	2:8:ImplFile:wmpmedia.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {DFBF9393-46FD-11D2-AEC3-00400141862D}
+# 	2:5:Class:CContourSeries
+# 	2:10:HeaderFile:contourseries1.h
+# 	2:8:ImplFile:contourseries1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {235FB74D-F8ED-11D4-93C8-006008A7EED4}
 # 	2:5:Class:CMetafileExport
@@ -1772,30 +1887,30 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:axistitle1.h
 # 	2:8:ImplFile:axistitle1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C104A9-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CGradient
-# 	2:10:HeaderFile:gradient1.h
-# 	2:8:ImplFile:gradient1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C1048B-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CPen1
-# 	2:10:HeaderFile:pen1.h
-# 	2:8:ImplFile:pen1.cpp
-# End Section
 # Section 轨道清洁检测车监控系统 : {5101D067-AD02-426B-832E-A898AF6E4F5E}
 # 	2:5:Class:CTeeShadow
 # 	2:10:HeaderFile:teeshadow1.h
 # 	2:8:ImplFile:teeshadow1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104E9-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CExpAvgFunction
+# 	2:10:HeaderFile:expavgfunction1.h
+# 	2:8:ImplFile:expavgfunction1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104A9-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CGradient
+# 	2:10:HeaderFile:gradient1.h
+# 	2:8:ImplFile:gradient1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {B6C104C9-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CArrowSeries
 # 	2:10:HeaderFile:arrowseries1.h
 # 	2:8:ImplFile:arrowseries1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C104A4-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CZoom
-# 	2:10:HeaderFile:zoom1.h
-# 	2:8:ImplFile:zoom1.cpp
+# Section 轨道清洁检测车监控系统 : {EC21B779-EDEF-462D-BBA4-AD9DDE2B29A7}
+# 	2:5:Class:CWMPNetwork
+# 	2:10:HeaderFile:wmpnetwork.h
+# 	2:8:ImplFile:wmpnetwork.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {E517CB29-1C48-11D5-9400-006008A7EED4}
 # 	2:5:Class:CAnnotationTool
@@ -1807,10 +1922,45 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:radarseries1.h
 # 	2:8:ImplFile:radarseries1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C104E9-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CExpAvgFunction
-# 	2:10:HeaderFile:expavgfunction1.h
-# 	2:8:ImplFile:expavgfunction1.cpp
+# Section 轨道清洁检测车监控系统 : {B6C1053C-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CBar3DSeries
+# 	2:10:HeaderFile:bar3dseries1.h
+# 	2:8:ImplFile:bar3dseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C10510-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CRSIFunction
+# 	2:10:HeaderFile:rsifunction1.h
+# 	2:8:ImplFile:rsifunction1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {C746269F-0A39-4EC5-B52F-7E489835035B}
+# 	2:5:Class:CAxisArrowTool
+# 	2:10:HeaderFile:axisarrowtool1.h
+# 	2:8:ImplFile:axisarrowtool1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {8363BC22-B4B4-4B19-989D-1CD765749DD1}
+# 	2:5:Class:CWMPMediaCollection
+# 	2:10:HeaderFile:wmpmediacollection.h
+# 	2:8:ImplFile:wmpmediacollection.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {4A976298-8C0D-11D3-B389-00C04F68574B}
+# 	2:5:Class:CWMPStringCollection
+# 	2:10:HeaderFile:wmpstringcollection.h
+# 	2:8:ImplFile:wmpstringcollection.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104AB-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CPanel
+# 	2:10:HeaderFile:panel1.h
+# 	2:8:ImplFile:panel1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {10A13217-23A7-439B-B1C0-D847C79B7774}
+# 	2:5:Class:CWMPPlaylistCollection
+# 	2:10:HeaderFile:wmpplaylistcollection.h
+# 	2:8:ImplFile:wmpplaylistcollection.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104A4-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CZoom
+# 	2:10:HeaderFile:zoom1.h
+# 	2:8:ImplFile:zoom1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {67D7AA1C-12FA-4F34-8EB2-B3E8646E0E5F}
 # 	2:5:Class:CTools
@@ -1836,26 +1986,6 @@ SOURCE=.\ReadMe.txt
 # 	2:5:Class:CBarSeries
 # 	2:10:HeaderFile:barseries1.h
 # 	2:8:ImplFile:barseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C104AB-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CPanel
-# 	2:10:HeaderFile:panel1.h
-# 	2:8:ImplFile:panel1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C1053C-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CBar3DSeries
-# 	2:10:HeaderFile:bar3dseries1.h
-# 	2:8:ImplFile:bar3dseries1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C10510-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CRSIFunction
-# 	2:10:HeaderFile:rsifunction1.h
-# 	2:8:ImplFile:rsifunction1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {C746269F-0A39-4EC5-B52F-7E489835035B}
-# 	2:5:Class:CAxisArrowTool
-# 	2:10:HeaderFile:axisarrowtool1.h
-# 	2:8:ImplFile:axisarrowtool1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {69A3C18D-728E-47B5-9144-7C58B59AA42D}
 # 	2:5:Class:CSmithSeries
@@ -1887,35 +2017,50 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:canvas1.h
 # 	2:8:ImplFile:canvas1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {B6C10493-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CAxisLabels
-# 	2:10:HeaderFile:axislabels1.h
-# 	2:8:ImplFile:axislabels1.cpp
+# Section 轨道清洁检测车监控系统 : {235FB755-F8ED-11D4-93C8-006008A7EED4}
+# 	2:5:Class:CChartImageTool
+# 	2:10:HeaderFile:chartimagetool1.h
+# 	2:8:ImplFile:chartimagetool1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {2E375632-A81D-400A-9369-F609B6B914AC}
 # 	2:5:Class:CBoxPlotSeries
 # 	2:10:HeaderFile:boxplotseries1.h
 # 	2:8:ImplFile:boxplotseries1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {235FB755-F8ED-11D4-93C8-006008A7EED4}
-# 	2:5:Class:CChartImageTool
-# 	2:10:HeaderFile:chartimagetool1.h
-# 	2:8:ImplFile:chartimagetool1.cpp
+# Section 轨道清洁检测车监控系统 : {679409C0-99F7-11D3-9FB7-00105AA620BB}
+# 	2:5:Class:CWMPPlaylistArray
+# 	2:10:HeaderFile:wmpplaylistarray.h
+# 	2:8:ImplFile:wmpplaylistarray.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {CFAB6E98-8730-11D3-B388-00C04F68574B}
+# 	2:5:Class:CWMPCdrom
+# 	2:10:HeaderFile:wmpcdrom.h
+# 	2:8:ImplFile:wmpcdrom.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C10493-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CAxisLabels
+# 	2:10:HeaderFile:axislabels1.h
+# 	2:8:ImplFile:axislabels1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {B6C10509-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CSeriesMarksPositions
 # 	2:10:HeaderFile:seriesmarkspositions1.h
 # 	2:8:ImplFile:seriesmarkspositions1.cpp
 # End Section
+# Section 轨道清洁检测车监控系统 : {9CE4E780-4431-4504-948A-797D83C1E310}
+# 	2:5:Class:CDragMarksTool
+# 	2:10:HeaderFile:dragmarkstool1.h
+# 	2:8:ImplFile:dragmarkstool1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {74C09E02-F828-11D2-A74B-00A0C905F36E}
+# 	2:5:Class:CWMPControls
+# 	2:10:HeaderFile:wmpcontrols.h
+# 	2:8:ImplFile:wmpcontrols.cpp
+# End Section
 # Section 轨道清洁检测车监控系统 : {AC690AD7-0730-11D5-93E3-006008A7EED4}
 # 	2:5:Class:CTextExport
 # 	2:10:HeaderFile:textexport1.h
 # 	2:8:ImplFile:textexport1.cpp
-# End Section
-# Section 轨道清洁检测车监控系统 : {B6C104C8-FB89-11D4-93C9-006008A7EED4}
-# 	2:5:Class:CShapeSeries
-# 	2:10:HeaderFile:shapeseries1.h
-# 	2:8:ImplFile:shapeseries1.cpp
 # End Section
 # Section 轨道清洁检测车监控系统 : {B6C104A8-FB89-11D4-93C9-006008A7EED4}
 # 	2:5:Class:CLegend
@@ -1937,8 +2082,108 @@ SOURCE=.\ReadMe.txt
 # 	2:10:HeaderFile:clockseries1.h
 # 	2:8:ImplFile:clockseries1.cpp
 # End Section
-# Section 轨道清洁检测车监控系统 : {9CE4E780-4431-4504-948A-797D83C1E310}
-# 	2:5:Class:CDragMarksTool
-# 	2:10:HeaderFile:dragmarkstool1.h
-# 	2:8:ImplFile:dragmarkstool1.cpp
+# Section 轨道清洁检测车监控系统 : {B6C1050B-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CPolarSeries
+# 	2:10:HeaderFile:polarseries1.h
+# 	2:8:ImplFile:polarseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104DF-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CErrorBarSeries
+# 	2:10:HeaderFile:errorbarseries1.h
+# 	2:8:ImplFile:errorbarseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C10534-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CTeePoint3D
+# 	2:10:HeaderFile:teepoint3d1.h
+# 	2:8:ImplFile:teepoint3d1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C10504-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CBezierSeries
+# 	2:10:HeaderFile:bezierseries1.h
+# 	2:8:ImplFile:bezierseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104AF-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CValueList
+# 	2:10:HeaderFile:valuelist1.h
+# 	2:8:ImplFile:valuelist1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104E8-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CCurveFittingFunction
+# 	2:10:HeaderFile:curvefittingfunction1.h
+# 	2:8:ImplFile:curvefittingfunction1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104BF-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CAreaSeries
+# 	2:10:HeaderFile:areaseries1.h
+# 	2:8:ImplFile:areaseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {750EB847-B333-4A73-8AEE-9087F8B98D1E}
+# 	2:5:Class:CToolList
+# 	2:10:HeaderFile:toollist1.h
+# 	2:8:ImplFile:toollist1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104C8-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CShapeSeries
+# 	2:10:HeaderFile:shapeseries1.h
+# 	2:8:ImplFile:shapeseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {8DA61686-4668-4A5C-AE5D-803193293DBE}
+# 	2:5:Class:CWMPDVD
+# 	2:10:HeaderFile:wmpdvd.h
+# 	2:8:ImplFile:wmpdvd.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B86AE373-50DC-4AE9-8872-8E3F9FC21A4E}
+# 	2:5:Class:CMACDFunction
+# 	2:10:HeaderFile:macdfunction1.h
+# 	2:8:ImplFile:macdfunction1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {449C6526-C2F8-47EE-8386-32D20B488B8B}
+# 	2:5:Class:CCursorTool
+# 	2:10:HeaderFile:cursortool1.h
+# 	2:8:ImplFile:cursortool1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {70C80BD0-D36A-46C9-A9D6-AE8687CA0EA5}
+# 	2:5:Class:CHistogramSeries
+# 	2:10:HeaderFile:histogramseries1.h
+# 	2:8:ImplFile:histogramseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104A3-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CScroll
+# 	2:10:HeaderFile:scroll1.h
+# 	2:8:ImplFile:scroll1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {6C497D62-8919-413C-82DB-E935FB3EC584}
+# 	2:5:Class:CWMPPlayer4
+# 	2:10:HeaderFile:wmpplayer4.h
+# 	2:8:ImplFile:wmpplayer4.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {3752717C-15C0-4C15-9532-C9C371388028}
+# 	2:5:Class:CADXFunction
+# 	2:10:HeaderFile:adxfunction1.h
+# 	2:8:ImplFile:adxfunction1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C104AA-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CPage
+# 	2:10:HeaderFile:page1.h
+# 	2:8:ImplFile:page1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C1053B-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CImageBarSeries
+# 	2:10:HeaderFile:imagebarseries1.h
+# 	2:8:ImplFile:imagebarseries1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {235FB744-F8ED-11D4-93C8-006008A7EED4}
+# 	2:5:Class:CPNGExport
+# 	2:10:HeaderFile:pngexport1.h
+# 	2:8:ImplFile:pngexport1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {B6C10497-FB89-11D4-93C9-006008A7EED4}
+# 	2:5:Class:CImport
+# 	2:10:HeaderFile:import1.h
+# 	2:8:ImplFile:import1.cpp
+# End Section
+# Section 轨道清洁检测车监控系统 : {FDB6AE9B-AE83-4CC3-AC6D-03CF0E133867}
+# 	2:5:Class:CPyramidSeries
+# 	2:10:HeaderFile:pyramidseries1.h
+# 	2:8:ImplFile:pyramidseries1.cpp
 # End Section

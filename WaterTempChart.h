@@ -14,6 +14,7 @@ class CWaterTempChart : public CDialog
 {
 // Construction
 public:
+	void ShowData();
 	CWaterTempChart(CWnd* pParent = NULL);   // standard constructor
 	BOOL ChangeRecord();
 	BOOL ShowSelectRowInfo();

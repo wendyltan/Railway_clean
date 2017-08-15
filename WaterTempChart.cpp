@@ -176,57 +176,7 @@ void CWaterTempChart::OnButtonLookback()
 		
 	if(m_buttonlookbackClick==0){
 
-		CString str;
-
- 		
- 		//让等列不能编辑
- 		for (int row = m_TempGrid.GetFixedRowCount(); row < m_TempGrid.GetRowCount(); row++)
-		{
- 			for (int col =m_TempGrid.GetFixedColumnCount(); col < m_TempGrid.GetColumnCount(); col++)
-			{
- 				m_TempGrid.SetItemState(row,col,m_TempGrid.GetItemState(row,col) | GVIS_READONLY);
- 			}
- 		}
- 
- 
- 		int nRow = 1;
-		while(!m_pRecordset->adoEOF)
- 		{
-			
-			//序号
-
-			CString newstr,str;
-			str.Format("%d",nRow);
-		    m_TempGrid.SetItemText(nRow,m_nIDCol,str);
-				
- 			
-			//时间
- 			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("时间"));
- 		    m_TempGrid.SetItemText(nRow,m_nTimeCol,str);
-		
- 			//副发动机水温
-			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("副发动机水温"));
- 			m_TempGrid.SetItemText(nRow,m_nEngineCol,str);
-
-			//车外环境温度
-			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车外环境温度"));
- 			m_TempGrid.SetItemText(nRow,m_nOutsideCol,str);
- 
-
-			//车内环境温度
-			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车外环境温度"));
- 			m_TempGrid.SetItemText(nRow,m_nInsideCol,str);
- 
- 
- 			
- 			nRow++;
-			m_pRecordset->MoveNext();
- 		}
-		m_nCurCol = nRow;//表格总行数
-
-		m_pRecordset->Close();
-	    m_TempGrid.Invalidate();
-		m_buttonlookbackClick++;
+		ShowData();
 	}
 	else
 	{
@@ -474,21 +424,31 @@ BOOL CWaterTempChart::ChangeRecord()
 		 return FALSE;
 	 }
 	 UpdateData(FALSE);
-	 /*
-	 int pos   = m_Grid.GetSelectionMark();    
-	 ADO m_Ado;         
-	 m_Ado.OnInitADOConn();       
-	 CString sql = "select * from employees";     
-	 m_Ado.m_pRecordset = m_Ado.OpenRecordset(sql);  
-	 */
+
 	 try
 	 {
-		  m_pRecordset->Move(m_nSelRow,vtMissing); 
+		  
+		  
+		  m_nSelRow--;
+		  
+		  m_pRecordset->Move(m_nSelRow);
 		
-		  m_pRecordset->PutCollect("时间",(_bstr_t)m_nTime);
-		  m_pRecordset->PutCollect("副发动机水温",(_bstr_t)m_nEngine);
-		  m_pRecordset->PutCollect("车外环境温度",(_bstr_t)m_nOutside);
-		  m_pRecordset->PutCollect("车外环境温度",(_bstr_t)m_nInside);
+		  m_pRecordset->PutCollect("时间",_variant_t(m_nTime));
+		  m_pRecordset->PutCollect("副发动机水温",_variant_t(m_nEngine));
+		  m_pRecordset->PutCollect("车外环境温度",_variant_t(m_nOutside));
+		  m_pRecordset->PutCollect("车外环境温度",_variant_t(m_nInside));
+
+		  m_nSelRow++;
+		  
+		  m_TempGrid.SetItemText(m_nSelRow,m_nTimeCol,m_nTime);
+		  m_TempGrid.SetItemText(m_nSelRow,m_nEngineCol,m_nEngine);
+		  m_TempGrid.SetItemText(m_nSelRow,m_nOutsideCol,m_nOutside);
+		  m_TempGrid.SetItemText(m_nSelRow,m_nInsideCol,m_nInside);
+		
+
+		  
+
+
 		  m_pRecordset->Update();     
 		  m_pRecordset->Close(); 
 		  m_TempGrid.Invalidate();
@@ -526,4 +486,59 @@ void CWaterTempChart::OnButtonShowSelect()
 		ShowSelectRowInfo();
 	}
 
+}
+
+void CWaterTempChart::ShowData()
+{
+	CString str;
+
+ 		
+ 		//让等列不能编辑
+ 		for (int row = m_TempGrid.GetFixedRowCount(); row < m_TempGrid.GetRowCount(); row++)
+		{
+ 			for (int col =m_TempGrid.GetFixedColumnCount(); col < m_TempGrid.GetColumnCount(); col++)
+			{
+ 				m_TempGrid.SetItemState(row,col,m_TempGrid.GetItemState(row,col) | GVIS_READONLY);
+ 			}
+ 		}
+ 
+ 
+ 		int nRow = 1;
+		while(!m_pRecordset->adoEOF)
+ 		{
+			
+			//序号
+
+			CString newstr,str;
+			str.Format("%d",nRow);
+		    m_TempGrid.SetItemText(nRow,m_nIDCol,str);
+				
+ 			
+			//时间
+ 			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("时间"));
+ 		    m_TempGrid.SetItemText(nRow,m_nTimeCol,str);
+		
+ 			//副发动机水温
+			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("副发动机水温"));
+ 			m_TempGrid.SetItemText(nRow,m_nEngineCol,str);
+
+			//车外环境温度
+			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车外环境温度"));
+ 			m_TempGrid.SetItemText(nRow,m_nOutsideCol,str);
+ 
+
+			//车内环境温度
+			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车外环境温度"));
+ 			m_TempGrid.SetItemText(nRow,m_nInsideCol,str);
+ 
+ 
+ 			
+ 			nRow++;
+			m_pRecordset->MoveNext();
+ 		}
+		m_nCurCol = nRow;//表格总行数
+
+		m_pRecordset->Close();
+	    m_TempGrid.Invalidate();
+		m_buttonlookbackClick++;
 }

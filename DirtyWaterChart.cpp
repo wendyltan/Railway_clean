@@ -175,49 +175,7 @@ void CDirtyWaterChart::OnButtonLookback()
 		
 	if(m_buttonlookbackClick==0){
 
-		CString str;
-
- 		
- 		//让等列不能编辑
- 		for (int row = m_DirtyWaterGrid.GetFixedRowCount(); row < m_DirtyWaterGrid.GetRowCount(); row++)
-		{
- 			for (int col =m_DirtyWaterGrid.GetFixedColumnCount(); col < m_DirtyWaterGrid.GetColumnCount(); col++)
-			{
- 				m_DirtyWaterGrid.SetItemState(row,col,m_DirtyWaterGrid.GetItemState(row,col) | GVIS_READONLY);
- 			}
- 		}
- 
- 
- 		int nRow = 1;
-		while(!m_pRecordset->adoEOF)
- 		{
-			
-			//序号
-
-			CString newstr,str;
-			str.Format("%d",nRow);
-		    m_DirtyWaterGrid.SetItemText(nRow,m_nIDCol,str);
-				
- 			
-			//时间
- 			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("时间"));
- 		    m_DirtyWaterGrid.SetItemText(nRow,m_nTimeCol,str);
-		
- 			//水位
-			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("污水箱水位"));
-			if(atof(str)<1&&atof(str)>0) newstr.Format("0%s",str);
-			else newstr = str;
- 			m_DirtyWaterGrid.SetItemText(nRow,m_nWaterCol,newstr);
- 
- 			
- 			nRow++;
-			m_pRecordset->MoveNext();
- 		}
-		m_nCurCol = nRow;//表格总行数
-
-		m_pRecordset->Close();
-	    m_DirtyWaterGrid.Invalidate();
-		m_buttonlookbackClick++;
+		ShowData();
 	}
 	else
 	{
@@ -458,22 +416,27 @@ BOOL CDirtyWaterChart::ChangeRecord()
 		 return FALSE;
 	 }
 	 UpdateData(FALSE);
-	 /*
-	 int pos   = m_Grid.GetSelectionMark();    
-	 ADO m_Ado;         
-	 m_Ado.OnInitADOConn();       
-	 CString sql = "select * from employees";     
-	 m_Ado.m_pRecordset = m_Ado.OpenRecordset(sql);  
-	 */
+
 	 try
 	 {
-		  m_pRecordset->Move(m_nSelRow,vtMissing); 
+		  m_nSelRow--;
+		  m_pRecordset->Move(m_nSelRow); 
+
+		  
 		
-		  m_pRecordset->PutCollect("时间",(_bstr_t)m_nTime);
-		  m_pRecordset->PutCollect("污水箱水位",(_bstr_t)m_nWater);
+		  m_pRecordset->PutCollect("时间",_variant_t(m_nTime));
+		  m_pRecordset->PutCollect("污水箱水位",_variant_t(m_nWater));
+
+		  m_nSelRow++;
+
+		  m_DirtyWaterGrid.SetItemText(m_nSelRow,m_nTimeCol,m_nTime);
+		  m_DirtyWaterGrid.SetItemText(m_nSelRow,m_nWaterCol,m_nWater);
+		  m_DirtyWaterGrid.Invalidate();
+
 		  m_pRecordset->Update();     
 		  m_pRecordset->Close(); 
-		  m_DirtyWaterGrid.Invalidate();
+
+
 	 }
 	 catch(...)             
 	 {
@@ -508,4 +471,51 @@ void CDirtyWaterChart::OnButtonShowSelect()
 		ShowSelectRowInfo();
 	}
 
+}
+
+void CDirtyWaterChart::ShowData()
+{
+	CString str;
+
+ 		
+ 		//让等列不能编辑
+ 		for (int row = m_DirtyWaterGrid.GetFixedRowCount(); row < m_DirtyWaterGrid.GetRowCount(); row++)
+		{
+ 			for (int col =m_DirtyWaterGrid.GetFixedColumnCount(); col < m_DirtyWaterGrid.GetColumnCount(); col++)
+			{
+ 				m_DirtyWaterGrid.SetItemState(row,col,m_DirtyWaterGrid.GetItemState(row,col) | GVIS_READONLY);
+ 			}
+ 		}
+ 
+ 
+ 		int nRow = 1;
+		while(!m_pRecordset->adoEOF)
+ 		{
+			
+			//序号
+
+			CString newstr,str;
+			str.Format("%d",nRow);
+		    m_DirtyWaterGrid.SetItemText(nRow,m_nIDCol,str);
+				
+ 			
+			//时间
+ 			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("时间"));
+ 		    m_DirtyWaterGrid.SetItemText(nRow,m_nTimeCol,str);
+		
+ 			//水位
+			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("污水箱水位"));
+			if(atof(str)<1&&atof(str)>0) newstr.Format("0%s",str);
+			else newstr = str;
+ 			m_DirtyWaterGrid.SetItemText(nRow,m_nWaterCol,newstr);
+ 
+ 			
+ 			nRow++;
+			m_pRecordset->MoveNext();
+ 		}
+		m_nCurCol = nRow;//表格总行数
+
+		m_pRecordset->Close();
+	    m_DirtyWaterGrid.Invalidate();
+		m_buttonlookbackClick++;
 }
