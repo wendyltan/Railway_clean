@@ -22,8 +22,6 @@ CWindPreChart::CWindPreChart(CWnd* pParent /*=NULL*/)
 	//{{AFX_DATA_INIT(CWindPreChart)
 		// NOTE: the ClassWizard will add member initialization here
 	m_strTitle = _T("");	
-	m_range = _T("");
-	m_alarm = _T("");
 	m_nTime = _T("");
 	m_nFrontWind = _T("");
 	m_nBackWind1 = _T("");
@@ -50,9 +48,6 @@ CWindPreChart::CWindPreChart(CWnd* pParent /*=NULL*/)
 
 	m_buttonlookbackClick = 0;
 
-	//range and alarm data init
-	m_range = "1.5";
-	m_alarm = "2.0";
 
 }
 
@@ -62,8 +57,6 @@ void CWindPreChart::DoDataExchange(CDataExchange* pDX)
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CWindPreChart)
 	DDX_Text(pDX, IDC_TITLE, m_strTitle);
-	DDX_Text(pDX, IDC_RANGE_CHANGE, m_range);
-	DDX_Text(pDX, IDC_ALARM_CHANGE, m_alarm);
 	DDX_Text(pDX, IDC_EDIT_TIME, m_nTime);
 	DDX_Text(pDX, IDC_EDIT_FRONT_PRE, m_nFrontWind);
 	DDX_Text(pDX, IDC_EDIT_BACK_PRE1, m_nBackWind1);
@@ -78,8 +71,6 @@ BEGIN_MESSAGE_MAP(CWindPreChart, CDialog)
 		// NOTE: the ClassWizard will add message map macros here
 	ON_BN_CLICKED(IDC_BUTTON_LOOKBACK, OnButtonLookback)
 	ON_BN_CLICKED(IDC_BUTTON_OUTPUT_TABLE, OnButtonOutputTable)
-	ON_BN_CLICKED(IDC_BUTTON_EDIT_RANGE, OnButtonEditRange)
-	ON_BN_CLICKED(IDC_BUTTON_EDIT_ALRAM, OnButtonEditAlram)
 	ON_BN_CLICKED(IDC_BUTTON_CONFIRM, OnButtonConfirm)
 	ON_BN_CLICKED(IDC_BUTTON_SHOW_SELECT, OnButtonShowSelect)
 	//}}AFX_MSG_MAP
@@ -357,43 +348,6 @@ BOOL CWindPreChart::ShowSelectRowInfo()
 	
 }
 
-void CWindPreChart::OnButtonEditRange() 
-{
-	// TODO: Add your control notification handler code here
-	
-	UpdateData();
-	
-	CString str;
-	GetDlgItemText(IDC_RANGE_CHANGE,str);
-	if(!str.IsEmpty()){
-
-		UpdateData(FALSE);
-		MessageBox("range change success!");
-	}
-	else{
-		MessageBox("field is empty! try again.");
-	}
-
-}
-
-void CWindPreChart::OnButtonEditAlram() 
-{
-	// TODO: Add your control notification handler code here
-	UpdateData();
-	
-	CString str;
-	GetDlgItemText(IDC_ALARM_CHANGE,str);
-	if(!str.IsEmpty()){
-
-		UpdateData(FALSE);
-		MessageBox("alarm change success!");
-	}
-	else{
-		MessageBox("field is empty! try again.");
-	}
-
-	
-}
 
 
 BOOL CWindPreChart::ChangeRecord()

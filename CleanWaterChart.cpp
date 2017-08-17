@@ -21,8 +21,6 @@ CCleanWaterChart::CCleanWaterChart(CWnd* pParent /*=NULL*/)
 {
 	//{{AFX_DATA_INIT(CCleanWaterChart)
 	m_strTitle = _T("");	
-	m_range = _T("");
-	m_alarm = _T("");
 	m_nTime = _T("");
 	m_nWater = _T("");
 	//}}AFX_DATA_INIT
@@ -45,9 +43,6 @@ CCleanWaterChart::CCleanWaterChart(CWnd* pParent /*=NULL*/)
 
 	m_buttonlookbackClick = 0;
 
-	//range and alarm data init
-	m_range = "1.5";
-	m_alarm = "2.0";
 
 
 }
@@ -58,8 +53,6 @@ void CCleanWaterChart::DoDataExchange(CDataExchange* pDX)
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CCleanWaterChart)
 	DDX_Text(pDX, IDC_TITLE, m_strTitle);
-	DDX_Text(pDX, IDC_RANGE_CHANGE, m_range);
-	DDX_Text(pDX, IDC_ALARM_CHANGE, m_alarm);
 	DDX_Text(pDX, IDC_EDIT_TIME, m_nTime);
 	DDX_Text(pDX, IDC_EDIT_WATER, m_nWater);
 	//}}AFX_DATA_MAP
@@ -71,10 +64,9 @@ BEGIN_MESSAGE_MAP(CCleanWaterChart, CDialog)
 	//{{AFX_MSG_MAP(CCleanWaterChart)
 	ON_BN_CLICKED(IDC_BUTTON_LOOKBACK, OnButtonLookback)
 	ON_BN_CLICKED(IDC_BUTTON_OUTPUT_TABLE, OnButtonOutputTable)
-	ON_BN_CLICKED(IDC_BUTTON_EDIT_RANGE, OnButtonEditRange)
-	ON_BN_CLICKED(IDC_BUTTON_EDIT_ALRAM, OnButtonEditAlram)
 	ON_BN_CLICKED(IDC_BUTTON_CONFIRM, OnButtonConfirm)
 	ON_BN_CLICKED(IDC_BUTTON_SHOW_SELECT, OnButtonShowSelect)
+	ON_BN_CLICKED(IDC_BUTTON_INSERT_CURRENT, OnButtonInsertCurrent)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -342,43 +334,6 @@ BOOL CCleanWaterChart::ShowSelectRowInfo()
 	
 }
 
-void CCleanWaterChart::OnButtonEditRange() 
-{
-	// TODO: Add your control notification handler code here
-	
-	UpdateData();
-	
-	CString str;
-	GetDlgItemText(IDC_RANGE_CHANGE,str);
-	if(!str.IsEmpty()){
-
-		UpdateData(FALSE);
-		MessageBox("range change success!");
-	}
-	else{
-		MessageBox("field is empty! try again.");
-	}
-
-}
-
-void CCleanWaterChart::OnButtonEditAlram() 
-{
-	// TODO: Add your control notification handler code here
-	UpdateData();
-	
-	CString str;
-	GetDlgItemText(IDC_ALARM_CHANGE,str);
-	if(!str.IsEmpty()){
-
-		UpdateData(FALSE);
-		MessageBox("alarm change success!");
-	}
-	else{
-		MessageBox("field is empty! try again.");
-	}
-
-	
-}
 
 
 BOOL CCleanWaterChart::ChangeRecord()
@@ -507,4 +462,14 @@ void CCleanWaterChart::ShowData()
 		m_pRecordset->Close();
 		m_CleanWaterGrid.Invalidate();
 		m_buttonlookbackClick++;
+}
+
+void CCleanWaterChart::OnButtonInsertCurrent() 
+{
+	// TODO: Add your control notification handler code here
+	COleDateTime CurTime = COleDateTime::GetCurrentTime(); 
+	CString csTime = CurTime.Format("%Y-%m-%d %H:%M:%S");
+	m_nTime = csTime;
+	UpdateData(FALSE);
+
 }

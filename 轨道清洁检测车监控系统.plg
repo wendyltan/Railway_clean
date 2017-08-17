@@ -6,13 +6,13 @@
 --------------------Configuration: 轨道清洁检测车监控系统 - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSPA3F1.tmp" with contents
+Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSPEAE3.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /FR"Debug/" /Fp"Debug/轨道清洁检测车监控系统.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
-"C:\Users\Wendy\Desktop\清洁车\轨道清洁检测车监控系统备份 -814增加报警功能\轨道清洁检测车监控系统Dlg.cpp"
+"C:\Users\Wendy\Desktop\清洁车\轨道清洁检测车监控系统备份 -814增加报警功能\CleanWaterChart.cpp"
 ]
-Creating command line "cl.exe @C:\Users\Wendy\AppData\Local\Temp\RSPA3F1.tmp" 
-Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSPA401.tmp" with contents
+Creating command line "cl.exe @C:\Users\Wendy\AppData\Local\Temp\RSPEAE3.tmp" 
+Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSPEAE4.tmp" with contents
 [
 /nologo /subsystem:windows /incremental:yes /pdb:"Debug/轨道清洁检测车监控系统.pdb" /debug /machine:I386 /out:"Debug/轨道清洁检测车监控系统.exe" /pdbtype:sept 
 ".\Debug\GridCell.obj"
@@ -175,13 +175,14 @@ Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSPA401.tmp" with con
 ".\Debug\wmpsettings.obj"
 ".\Debug\wmpstringcollection.obj"
 ".\Debug\轨道清洁检测车监控系统.res"
+".\Debug\MaximumChart.obj"
 ]
-Creating command line "link.exe @C:\Users\Wendy\AppData\Local\Temp\RSPA401.tmp"
+Creating command line "link.exe @C:\Users\Wendy\AppData\Local\Temp\RSPEAE4.tmp"
 <h3>Output Window</h3>
 Compiling...
-轨道清洁检测车监控系统Dlg.cpp
+CleanWaterChart.cpp
 Linking...
-Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSPA599.tmp" with contents
+Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSPEBDF.tmp" with contents
 [
 /nologo /o"Debug/轨道清洁检测车监控系统.bsc" 
 ".\Debug\StdAfx.sbr"
@@ -342,8 +343,9 @@ Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSPA599.tmp" with con
 ".\Debug\wmpplaylistarray.sbr"
 ".\Debug\wmpplaylistcollection.sbr"
 ".\Debug\wmpsettings.sbr"
-".\Debug\wmpstringcollection.sbr"]
-Creating command line "bscmake.exe @C:\Users\Wendy\AppData\Local\Temp\RSPA599.tmp"
+".\Debug\wmpstringcollection.sbr"
+".\Debug\MaximumChart.sbr"]
+Creating command line "bscmake.exe @C:\Users\Wendy\AppData\Local\Temp\RSPEBDF.tmp"
 Creating browse info file...
 <h3>Output Window</h3>
 

@@ -8,7 +8,9 @@
 #include "DirtyWaterChart.h"
 #include "WaterTempChart.h"
 #include "WindPreChart.h"
+#include "MaximumChart.h"
 #include "Video.h"
+
 
 #include "TeeInclude.h"
 
@@ -33,7 +35,7 @@ struct TEXTINFO{
 struct TYPE{
 	CString TableTypeName;
 	int TableTypeID;
-}tabletype[7];
+}tabletype[8];
 
 
 struct teeType{
@@ -125,15 +127,12 @@ CMyDlg::CMyDlg(CWnd* pParent /*=NULL*/)
 	tabletype[5].TableTypeID = 5;
 	tabletype[6].TableTypeName = "吸尘口压力表"; //wind pressure
 	tabletype[6].TableTypeID = 6;
+	tabletype[7].TableTypeName = "逆变器电压";//volt
+	tabletype[7].TableTypeID = 7;
 	
 
 	
 	
-	//info init----------------------
-	info[0].nID = IDC_WATER_TEMP;
-	info[1].nID = IDC_INSIDE_TEMP;
-	info[2].nID = IDC_OUTSIDE_TEMP;
-	info[3].nID = IDC_VOLT;
 
 	//text info init-------------------------
 	
@@ -160,13 +159,15 @@ CMyDlg::CMyDlg(CWnd* pParent /*=NULL*/)
 	textinfo[11].nID = IDC_EDIT_BACK_LEFT;
 	textinfo[12].nID = IDC_EDIT_BACK_RIGHT;
 
-	//teechart init
+	//teechart init-------------------------
 	teechart[0].teeID = 0;
 	teechart[0].tchartname = "车外环境温度";
 	teechart[1].teeID = 1;
 	teechart[1].tchartname = "车外环境温度";
 	teechart[2].teeID = 2;
 	teechart[2].tchartname = "副发动机水温";
+	teechart[3].teeID = 3;
+	teechart[3].tchartname = "逆变器电压";
 
 	//database init--------------------------
 	tcount = 0;
@@ -205,6 +206,7 @@ void CMyDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX,IDC_INSIDE_MAIN,m_iChart);
 	DDX_Control(pDX,IDC_OUTSIDE_MAIN,m_oChart);
 	DDX_Control(pDX,IDC_WATER_MAIN,m_wChart);
+	DDX_Control(pDX,IDC_VOLT_MAIN,m_vChart);
 
 	
 }
@@ -225,6 +227,7 @@ BEGIN_MESSAGE_MAP(CMyDlg, CDialog)
 	ON_COMMAND(IDM_WATER_TEMP, OnWaterTemp)
 	ON_WM_DESTROY()
 	ON_COMMAND(IDM_WIND_PRE, OnWindPre)
+	ON_COMMAND(IDM_MAXIMUM, OnMaximum)
 	ON_BN_CLICKED(IDC_BUTTON_VOLT, OnButtonVolt)
 	ON_BN_CLICKED(IDC_BUTTON_WATCH_VIDEO, OnButtonWatchVideo)
 	ON_BN_CLICKED(IDC_BUTTON_BEEP, OnButtonBeep)
@@ -264,7 +267,7 @@ BOOL CMyDlg::OnInitDialog()
 	// TODO: Add extra initialization here
 	
 
-	for(int i=0;i<7;i++)
+	for(int i=0;i<8;i++)
 	{
 		m_pCurrentset[i] = JudgeType(i);
 	}
@@ -393,22 +396,29 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 	// TODO: Add your message handler code here and/or call default
 
 
-	if(m_RecordNum==9) m_pCurrentset[4]->Move((long)m_RecordNum++);	
+	if(m_RecordNum==9) {m_pCurrentset[4]->Move((long)m_RecordNum++);m_pCurrentset[7]->Move((long)m_RecordNum++);}	
 	if(nIDEvent == 1)
 	{	
-		if(!m_pCurrentset[4]->adoEOF)
+		if(!m_pCurrentset[4]->adoEOF||!m_pCurrentset[7]->adoEOF)
 		{
 
 			dealTimer(0,teechart[0].tchartname);
 			dealTimer(1,teechart[1].tchartname);
 			dealTimer(2,teechart[2].tchartname);
+			dealTimer(3,teechart[3].tchartname);
+			CurTime+= tmSpan;
+
 			m_pCurrentset[4]->MoveNext();
-			
+			m_pCurrentset[7]->MoveNext();
 			m_RecordNum++;
 		}
-		else
+		else if(m_pCurrentset[4]->adoEOF)
 		{
 		  KillTimer(1);m_pCurrentset[4]->Close();//MessageBox("END OF RECORD!");
+		}
+		else if(m_pCurrentset[7]->adoEOF)
+		{
+			KillTimer(1);m_pCurrentset[7]->Close();
 		}
 	}
 	
@@ -598,6 +608,14 @@ void CMyDlg::OnWindPre()
 	
 }
 
+void CMyDlg::OnMaximum() 
+{
+	// TODO: Add your command handler code here
+	CMaximumChart mxc;
+	mxc.DoModal();
+	
+}
+
 
 
 void CMyDlg::DatabaseConnect()
@@ -629,7 +647,7 @@ void CMyDlg::ReadTemp()
 {
 	
 	 m_RecordNum = 0;
-	 for(int i=0;i<3;i++)
+	 for(int i=0;i<4;i++)
 	 {
 		ChartInit(i,teechart[i].tchartname);
 	 }
@@ -725,6 +743,8 @@ _RecordsetPtr CMyDlg::JudgeType(int type)
 				break;
 
 			}
+		//温度 case4
+
 		//污水位
 		case 5:
 			{
@@ -761,7 +781,7 @@ _RecordsetPtr CMyDlg::JudgeType(int type)
 
 				break;
 			}
-				
+		//电压 case7	
 	}
 
 	return m_pRecordset;
@@ -793,6 +813,7 @@ void CMyDlg::ChartInit(int teeID,CString chartname)
 	 if(teeID ==0) tchart = &m_oChart;
 	 else if(teeID == 1) tchart = &m_iChart;
 	 else if(teeID == 2) tchart = &m_wChart;
+	 else if(teeID == 3) tchart = &m_vChart;
 
 
 	 tchart->SetVisible(true);
@@ -807,34 +828,38 @@ void CMyDlg::ChartInit(int teeID,CString chartname)
      CAxis left0 = (CAxis)coord.GetLeft();
      left0.SetAutomatic(FALSE);
      left0.SetMinimum(0);
-     left0.SetMaximum(40);
-     left0.SetIncrement(0);
+	 if(teeID == 3) left0.SetMaximum(10);
+     else left0.SetMaximum(70);
+	 if(teeID == 3) left0.SetIncrement(1);
+     else left0.SetIncrement(10);
      left0.SetStartPosition(0);
      left0.SetEndPosition(100);
      left0.SetPositionPercent(0);
 	 
 
-
-	 COleDateTime  CurTime;
-	 COleDateTimeSpan  tmSpan;
-	 CString csTime;
-
+	
 	 CurTime = COleDateTime::GetCurrentTime();  
-	 tmSpan = COleDateTimeSpan(0,0,0,1); //1s    
+	 tmSpan = COleDateTimeSpan(0,0,0,1); //1s  
+  
  	 
 
 	 
 	 CString str;
-			
 
-	 m_pCurrentset[4]->MoveFirst();
+	 if(teeID == 3) m_pCurrentset[7]->MoveFirst();
+	 else m_pCurrentset[4]->MoveFirst();
 	 //先用前十条记录初始化
 	 for(int i =0;i<10;i++){
-		str = (char*)(_bstr_t)m_pCurrentset[4]->GetCollect(_variant_t(chartname));	
+
+		if(teeID == 3) str = (char*)(_bstr_t)m_pCurrentset[7]->GetCollect(_variant_t(chartname));
+		else str = (char*)(_bstr_t)m_pCurrentset[4]->GetCollect(_variant_t(chartname));	
+
 		csTime= CurTime.Format("%H:%M:%S");
 		mycs0.Add(atof(str),csTime,RGB(255,0,0));
 		CurTime+= tmSpan;
-        m_pCurrentset[4]->MoveNext();
+
+		if(teeID == 3) m_pCurrentset[7]->MoveNext();
+        else m_pCurrentset[4]->MoveNext();
 		m_RecordNum++;
 		
 
@@ -846,23 +871,23 @@ void CMyDlg::ChartInit(int teeID,CString chartname)
 
 void CMyDlg::dealTimer(int teeID,CString chartname)
 {
-	
-	COleDateTime  CurTime = COleDateTime::GetCurrentTime();
-	COleDateTimeSpan  tmSpan = COleDateTimeSpan(0,0,0,1); //1s 
+
 	CString csTime = CurTime.Format("%H:%M:%S");
 	CString str;
 	
-	str = (char*)(_bstr_t)m_pCurrentset[4]->GetCollect(_variant_t(chartname));	
-	csTime= CurTime.Format("%H:%M:%S");
-    
+	
+	if(teeID == 3)	str = (char*)(_bstr_t)m_pCurrentset[7]->GetCollect(_variant_t(chartname));
+	else str = (char*)(_bstr_t)m_pCurrentset[4]->GetCollect(_variant_t(chartname));	
+
 	CTChart *tchart;
 	if(teeID ==0) tchart = &m_oChart;
 	else if(teeID == 1) tchart = &m_iChart;
 	else if(teeID == 2) tchart = &m_wChart;
+	else if(teeID == 3) tchart = &m_vChart;
 
 	
 	tchart->Series(0).Add(atof(str),csTime,RGB(255,0,0));
-	CurTime+= tmSpan;
+	
 	tchart->GetAxis().GetBottom().Scroll(1.0,TRUE);
    
 }

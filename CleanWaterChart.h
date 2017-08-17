@@ -51,8 +51,6 @@ public:
 	//{{AFX_DATA(CCleanWaterChart)
 	enum { IDD = IDD_CLEAN_WATER_CHART };
 	CString	m_strTitle;
-	CString	m_range;
-	CString	m_alarm;
 	CString	m_nTime;
 	CString	m_nWater;
 	//}}AFX_DATA
@@ -73,10 +71,9 @@ protected:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnButtonLookback();
 	afx_msg void OnButtonOutputTable();
-	afx_msg void OnButtonEditRange();
-	afx_msg void OnButtonEditAlram();
 	afx_msg void OnButtonConfirm();
 	afx_msg void OnButtonShowSelect();
+	afx_msg void OnButtonInsertCurrent();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

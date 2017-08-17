@@ -80,6 +80,7 @@ protected:
 	afx_msg void OnWaterTemp();
 	afx_msg void OnDestroy();
 	afx_msg void OnWindPre();
+	afx_msg void OnMaximum();
 	afx_msg void OnButtonVolt();
 	afx_msg void OnButtonWatchVideo();
 	afx_msg void OnButtonBeep();
@@ -109,7 +110,7 @@ private:
 	_ConnectionPtr m_pConnection;
 	_RecordsetPtr m_pRecordset;
 	
-	_RecordsetPtr m_pCurrentset[7];
+	_RecordsetPtr m_pCurrentset[8];
 	
 	double m_RecordNum;
 
@@ -119,6 +120,12 @@ private:
 	CString m_AlarmTime;
 	CString m_AlarmArea;
 	CString m_AlarmCurrent;
+
+	//time
+	 COleDateTime  CurTime;
+	 COleDateTimeSpan  tmSpan;
+	 CString csTime;
+
 
 
 

@@ -47,8 +47,6 @@ public:
 	//{{AFX_DATA(CDirtyWaterChart)
 	enum { IDD = IDD_DIRTY_WATER_CHART };
 	CString	m_strTitle;
-	CString	m_range;
-	CString	m_alarm;
 	CString	m_nTime;
 	CString	m_nWater;
 		// NOTE: the ClassWizard will add data members here
@@ -71,8 +69,6 @@ protected:
 		virtual BOOL OnInitDialog();
 		afx_msg void OnButtonLookback();
 		afx_msg void OnButtonOutputTable();
-		afx_msg void OnButtonEditRange();
-		afx_msg void OnButtonEditAlram();
 		afx_msg void OnButtonConfirm();
 		afx_msg void OnButtonShowSelect();
 	//}}AFX_MSG

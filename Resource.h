@@ -22,6 +22,7 @@
 #define IDD_DIRTY_WATER_CHART           154
 #define IDD_WATER_TEMP_CHART            155
 #define IDD_DIALOG_VIDEO                158
+#define IDD_DIALOG_MAXIMUM              160
 #define IDC_EDIT_WIND_PRE               1005
 #define IDC_BUTTON_WINDPRE              1007
 #define IDC_BUTTON_OILPRE               1008
@@ -68,6 +69,7 @@
 #define IDC_BUTTON_ALRAM                1038
 #define IDC_EDIT_OUTSIDE                1038
 #define IDC_BUTTON_CLOSE                1038
+#define IDC_BUTTON_INSERT_CURRENT       1038
 #define IDC_EDIT_INSIDE                 1039
 #define IDC_BUTTON4                     1040
 #define IDC_BUTTON_EDIT_RANGE           1040
@@ -108,6 +110,10 @@
 #define IDC_OCX_PLAYER                  1080
 #define IDC_ALARM_TIME                  1081
 #define IDC_ALARM_CURRENT               1082
+#define IDC_VOLT_MAIN                   1083
+#define IDC_GRID_MAXIMUM                1084
+#define IDC_EDIT_PARAMETER              1085
+#define IDC_EDIT_MAXIMUM                1086
 #define IDM_LOOKBACK                    32771
 #define IDM_CURRANGE                    32772
 #define IDM_ALRAMHIS                    32773
@@ -123,14 +129,16 @@
 #define IDM_WATER_TEMP                  32782
 #define IDM_OUTSIDE_TEMP                32783
 #define IDM_WIND_PRE                    32784
+#define IDM_ALARM                       32785
+#define IDM_MAXIMUM                     32786
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        160
-#define _APS_NEXT_COMMAND_VALUE         32785
-#define _APS_NEXT_CONTROL_VALUE         1083
+#define _APS_NEXT_RESOURCE_VALUE        161
+#define _APS_NEXT_COMMAND_VALUE         32787
+#define _APS_NEXT_CONTROL_VALUE         1087
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
