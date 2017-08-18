@@ -35,7 +35,7 @@ struct TEXTINFO{
 struct TYPE{
 	CString TableTypeName;
 	int TableTypeID;
-}tabletype[8];
+}tabletype[9];
 
 
 struct teeType{
@@ -129,6 +129,10 @@ CMyDlg::CMyDlg(CWnd* pParent /*=NULL*/)
 	tabletype[6].TableTypeID = 6;
 	tabletype[7].TableTypeName = "逆变器电压";//volt
 	tabletype[7].TableTypeID = 7;
+
+	tabletype[8].TableTypeName = "上限表";//maximum,for alarm raising
+	tabletype[8].TableTypeID = 8;
+
 	
 
 	
@@ -230,7 +234,6 @@ BEGIN_MESSAGE_MAP(CMyDlg, CDialog)
 	ON_COMMAND(IDM_MAXIMUM, OnMaximum)
 	ON_BN_CLICKED(IDC_BUTTON_VOLT, OnButtonVolt)
 	ON_BN_CLICKED(IDC_BUTTON_WATCH_VIDEO, OnButtonWatchVideo)
-	ON_BN_CLICKED(IDC_BUTTON_BEEP, OnButtonBeep)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -267,7 +270,7 @@ BOOL CMyDlg::OnInitDialog()
 	// TODO: Add extra initialization here
 	
 
-	for(int i=0;i<8;i++)
+	for(int i=0;i<9;i++)
 	{
 		m_pCurrentset[i] = JudgeType(i);
 	}
@@ -437,6 +440,11 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			m_latitude = latitude;
 
 			UpdateData(FALSE);	
+
+			//raise alarm
+			RaiseAlarm(0,"清洁车纬度");
+			RaiseAlarm(0,"清洁车经度");
+
 			m_pCurrentset[0]->MoveNext();
 		}
 		else{
@@ -466,6 +474,13 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			m_backRight = backRight;
 
 			UpdateData(FALSE);
+
+			//raise alarm
+			RaiseAlarm(1,"车左前位置");
+			RaiseAlarm(1,"车右前位置");
+			RaiseAlarm(1,"车左后位置");
+			RaiseAlarm(1,"车右后位置");
+
 			m_pCurrentset[1]->MoveNext();
 
 		}
@@ -492,6 +507,11 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 	
 			
 			UpdateData(FALSE);
+			
+			//raise alarm
+			RaiseAlarm(2,"清水箱水位");
+
+
 			m_pCurrentset[2]->MoveNext();
 		}
 		else{
@@ -515,6 +535,11 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			m_highpre = highpre;
 			m_lowpre = lowpre;
 			UpdateData(FALSE);
+
+			//raise alarm
+			RaiseAlarm(3,"高压水泵压力");
+			RaiseAlarm(3,"低压水泵压力");
+
 			m_pCurrentset[3]->MoveNext();
 		}
 		else{
@@ -536,7 +561,10 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 	
 			
 
-			UpdateData(FALSE); 
+			UpdateData(FALSE);
+			//raise alarm
+			RaiseAlarm(5,"污水箱水位");
+
 			m_pCurrentset[5]->MoveNext();
 		}
 		else{
@@ -547,7 +575,7 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 
 	if(nIDEvent == 7){
 			
-		if(!m_pCurrentset[5]->adoEOF){
+		if(!m_pCurrentset[6]->adoEOF){
 			
 			CString frontwind = (char*)(_bstr_t)m_pCurrentset[6]->GetCollect(_variant_t("前吸尘口压力"));
 			CString backwind1 = (char*)(_bstr_t)m_pCurrentset[6]->GetCollect(_variant_t("后吸尘口1压力"));
@@ -559,6 +587,12 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			m_backWind2 = backwind2;
 
 			UpdateData(FALSE);
+
+			//raise alarm
+			RaiseAlarm(6,"前吸尘口压力");
+			RaiseAlarm(6,"后吸尘口1压力");
+			RaiseAlarm(6,"后吸尘口2压力");
+
 			m_pCurrentset[6]->MoveNext();
 		}
 		else{
@@ -652,7 +686,7 @@ void CMyDlg::ReadTemp()
 		ChartInit(i,teechart[i].tchartname);
 	 }
 	 	 
-	 SetTimer(1,1000,NULL);//1 sec*/
+	 SetTimer(1,1000,NULL);
 	
 }
 
@@ -781,7 +815,9 @@ _RecordsetPtr CMyDlg::JudgeType(int type)
 
 				break;
 			}
-		//电压 case7	
+		//电压 case7
+		//上限值 case8
+
 	}
 
 	return m_pRecordset;
@@ -902,11 +938,37 @@ void CMyDlg::OnButtonWatchVideo()
 	vlog.DoModal();
 }
 
-
-
-//TESTING BEEP
-void CMyDlg::OnButtonBeep() 
+void CMyDlg::RaiseAlarm(int setID,CString paraType)
 {
-	// TODO: Add your control notification handler code here
-	MessageBeep(MB_ICONASTERISK);
+	//compara current para's data to standard
+	CString currentParaData =(char*)(_bstr_t)m_pCurrentset[setID]->GetCollect(_variant_t(paraType));
+	m_pCurrentset[8]->MoveFirst();
+	CString ParaMax;
+
+	do
+	{
+		ParaMax = (char*)(_bstr_t)m_pCurrentset[8]->GetCollect(_variant_t("参数名称"));
+		m_pCurrentset[8]->MoveNext();
+	}while(ParaMax != paraType);
+
+	//have found it
+	m_pCurrentset[8]->MovePrevious();
+	ParaMax = (char*)(_bstr_t)m_pCurrentset[8]->GetCollect(_variant_t("当前上限值"));
+
+	//if not found
+	
+
+	//if somethings goes wrong,raise the alarm,change the text and beep once!
+	if(atof(currentParaData)>atof(ParaMax))
+	{
+		m_AlarmArea = paraType;
+		m_AlarmCurrent.Format("参数当前值：%s\n参数上限值：%s",currentParaData,ParaMax);
+		m_AlarmTime = csTime;
+		UpdateData(FALSE);
+		MessageBeep(MB_ICONASTERISK);
+	}
+
+	//记录进报警表
+	
+
 }

@@ -68,11 +68,11 @@ void CWindPreChart::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CWindPreChart, CDialog)
 	//{{AFX_MSG_MAP(CWindPreChart)
-		// NOTE: the ClassWizard will add message map macros here
 	ON_BN_CLICKED(IDC_BUTTON_LOOKBACK, OnButtonLookback)
 	ON_BN_CLICKED(IDC_BUTTON_OUTPUT_TABLE, OnButtonOutputTable)
 	ON_BN_CLICKED(IDC_BUTTON_CONFIRM, OnButtonConfirm)
 	ON_BN_CLICKED(IDC_BUTTON_SHOW_SELECT, OnButtonShowSelect)
+	ON_BN_CLICKED(IDC_BUTTON_INSERT_CURRENT, OnButtonInsertCurrent)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -287,17 +287,25 @@ void CWindPreChart::OnButtonOutputTable()
 				switch (l)
 				{
 				case 0:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("时间");
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("时间");
+						break;
+					}
 				case 1:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("前吸尘口压力");	
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("前吸尘口压力");	
+						break;
+					}
 				case 2:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("后吸尘口1压力");	
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("后吸尘口1压力");	
+						break;
+					}
 				case 3:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("后吸尘口2压力");	
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("后吸尘口2压力");	
+						break;
+					}
 
 
 				}
@@ -496,4 +504,13 @@ void CWindPreChart::ShowData()
 		m_pRecordset->Close();
 	    m_PreGrid.Invalidate();
 		m_buttonlookbackClick++;
+}
+
+void CWindPreChart::OnButtonInsertCurrent() 
+{
+	// TODO: Add your control notification handler code here
+	COleDateTime CurTime = COleDateTime::GetCurrentTime(); 
+	CString csTime = CurTime.Format("%Y-%m-%d %H:%M:%S");
+	m_nTime = csTime;
+	UpdateData(FALSE);
 }

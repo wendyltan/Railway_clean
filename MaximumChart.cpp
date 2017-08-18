@@ -67,11 +67,11 @@ void CMaximumChart::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CMaximumChart, CDialog)
 	//{{AFX_MSG_MAP(CMaximumChart)
-		// NOTE: the ClassWizard will add message map macros here
 	ON_BN_CLICKED(IDC_BUTTON_LOOKBACK, OnButtonLookback)
 	ON_BN_CLICKED(IDC_BUTTON_OUTPUT_TABLE, OnButtonOutputTable)
 	ON_BN_CLICKED(IDC_BUTTON_CONFIRM, OnButtonConfirm)
 	ON_BN_CLICKED(IDC_BUTTON_SHOW_SELECT, OnButtonShowSelect)
+	ON_BN_CLICKED(IDC_BUTTON_INSERT_CURRENT, OnButtonInsertCurrent)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -286,14 +286,20 @@ void CMaximumChart::OnButtonOutputTable()
 				switch (l)
 				{
 				case 0:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("时间");
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("时间");
+						break;
+					}
 				case 1:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("参数名称");	
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("参数名称");	
+						break;
+					}
 				case 2:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("当前上限值");	
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("当前上限值");	
+						break;
+					}
 
 
 				}
@@ -486,4 +492,13 @@ void CMaximumChart::ShowData()
 		m_pRecordset->Close();
 	    m_MaxGrid.Invalidate();
 		m_buttonlookbackClick++;
+}
+
+void CMaximumChart::OnButtonInsertCurrent() 
+{
+	// TODO: Add your control notification handler code here
+	COleDateTime CurTime = COleDateTime::GetCurrentTime(); 
+	CString csTime = CurTime.Format("%Y-%m-%d %H:%M:%S");
+	m_nTime = csTime;
+	UpdateData(FALSE);
 }

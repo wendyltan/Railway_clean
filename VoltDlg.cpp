@@ -5,8 +5,6 @@
 #include "轨道清洁检测车监控系统.h"
 #include "VoltDlg.h"
 #include "TeeChart/tchart.h"
-
-//先用吸尘口压力来测试，不可以用重复的表测试，等待电压表
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -46,7 +44,7 @@ CVoltDlg::CVoltDlg(CWnd* pParent /*=NULL*/)
 	m_pRecordset.CreateInstance(__uuidof(Recordset));
 
 	_variant_t RecordsAffected; 
-	m_pRecordset =m_pConnection->Execute("SELECT COUNT(*) FROM 吸尘口压力表",&RecordsAffected,adCmdText); 
+	m_pRecordset =m_pConnection->Execute("SELECT COUNT(*) FROM 逆变器电压",&RecordsAffected,adCmdText); 
 	_variant_t vIndex = (long)0; 
 	_variant_t vCount = m_pRecordset->GetCollect(vIndex); //取得第一个字段的值放入vCount变量 
 	count=vCount.lVal;										//获取记录集的记录数
@@ -56,7 +54,7 @@ CVoltDlg::CVoltDlg(CWnd* pParent /*=NULL*/)
 		
 	CString strSql;
 
-	strSql.Format("SELECT * FROM 吸尘口压力表");
+	strSql.Format("SELECT * FROM 逆变器电压");
 
 	hr = m_pRecordset->Open(strSql.AllocSysString(),
 			m_pConnection.GetInterfacePtr(),adOpenDynamic,adLockOptimistic,adCmdText);
@@ -96,15 +94,15 @@ BOOL CVoltDlg::OnInitDialog()
 	
 	//m_Chart.GetHeader().GetText().SetItem(0,COleVariant("hello"));
  
-     m_Chart.GetAxis().GetLeft().GetTitle().SetCaption("前吸尘口压力");  
+     m_Chart.GetAxis().GetLeft().GetTitle().SetCaption("逆变器电压");  
 	 //定义坐标系空间
 	 CSeries mycs0 =(CSeries)m_Chart.Series(0);
      CAxes coord = (CAxes)m_Chart.GetAxis();
      CAxis left0 = (CAxis)coord.GetLeft();
      left0.SetAutomatic(FALSE);
      left0.SetMinimum(0);
-     left0.SetMaximum(10000);
-     left0.SetIncrement(0);
+     left0.SetMaximum(10);
+     left0.SetIncrement(1);
      left0.SetStartPosition(0);
      left0.SetEndPosition(100);
      left0.SetPositionPercent(0);
@@ -125,7 +123,7 @@ BOOL CVoltDlg::OnInitDialog()
 	 m_pRecordset->MoveFirst();
 	 //先用前十条记录初始化
 	 for(int i =0;i<10;i++){
-		str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("前吸尘口压力"));	
+		str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("逆变器电压"));	
 		csTime= CurTime.Format("%H:%M:%S");
 		mycs0.Add(atof(str),csTime,RGB(255,0,0));
 		CurTime+= tmSpan;
@@ -157,7 +155,7 @@ void CVoltDlg::OnTimer(UINT nIDEvent)
 	if(nIDEvent == 1){	
 			
 		//使用这个可以让坐标轴动起来
-		str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("前吸尘口压力"));	
+		str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("逆变器电压"));	
 		csTime= CurTime.Format("%H:%M:%S");
      	m_Chart.Series(0).Add(atof(str),csTime,RGB(255,0,0));
 		CurTime+= tmSpan;

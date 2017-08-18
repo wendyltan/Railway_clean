@@ -67,11 +67,11 @@ void CWaterTempChart::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CWaterTempChart, CDialog)
 	//{{AFX_MSG_MAP(CWaterTempChart)
-		// NOTE: the ClassWizard will add message map macros here
 	ON_BN_CLICKED(IDC_BUTTON_LOOKBACK, OnButtonLookback)
 	ON_BN_CLICKED(IDC_BUTTON_OUTPUT_TABLE, OnButtonOutputTable)
 	ON_BN_CLICKED(IDC_BUTTON_CONFIRM, OnButtonConfirm)
 	ON_BN_CLICKED(IDC_BUTTON_SHOW_SELECT, OnButtonShowSelect)
+	ON_BN_CLICKED(IDC_BUTTON_INSERT_CURRENT2, OnButtonInsertCurrent)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -495,4 +495,15 @@ void CWaterTempChart::ShowData()
 		m_pRecordset->Close();
 	    m_TempGrid.Invalidate();
 		m_buttonlookbackClick++;
+}
+
+
+
+void CWaterTempChart::OnButtonInsertCurrent() 
+{
+	// TODO: Add your control notification handler code here
+	COleDateTime CurTime = COleDateTime::GetCurrentTime(); 
+	CString csTime = CurTime.Format("%Y-%m-%d %H:%M:%S");
+	m_nTime = csTime;
+	UpdateData(FALSE);
 }

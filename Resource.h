@@ -74,6 +74,7 @@
 #define IDC_BUTTON4                     1040
 #define IDC_BUTTON_EDIT_RANGE           1040
 #define IDC_BUTTON_WATCH_VIDEO          1040
+#define IDC_BUTTON_INSERT_CURRENT2      1040
 #define IDC_BUTTON5                     1041
 #define IDC_BUTTON_EDIT_ALRAM           1041
 #define IDC_BUTTON6                     1042

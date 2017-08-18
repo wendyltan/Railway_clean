@@ -65,11 +65,11 @@ void CDirtyWaterChart::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CDirtyWaterChart, CDialog)
 	//{{AFX_MSG_MAP(CDirtyWaterChart)
-		// NOTE: the ClassWizard will add message map macros here
 	ON_BN_CLICKED(IDC_BUTTON_LOOKBACK, OnButtonLookback)
 	ON_BN_CLICKED(IDC_BUTTON_OUTPUT_TABLE, OnButtonOutputTable)
 	ON_BN_CLICKED(IDC_BUTTON_CONFIRM, OnButtonConfirm)
 	ON_BN_CLICKED(IDC_BUTTON_SHOW_SELECT, OnButtonShowSelect)
+	ON_BN_CLICKED(IDC_BUTTON_INSERT_CURRENT, OnButtonInsertCurrent)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -286,14 +286,18 @@ void CDirtyWaterChart::OnButtonOutputTable()
 				switch (l)
 				{
 				case 0:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("时间");
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("时间");
+						break;
+					}
 				case 1:
-					CString str;
-					str=(char*)(_bstr_t)m_pRecordset->GetCollect("污水箱水位");	
-					if(atof(str)<1&&atof(str)>0) strvalue.Format("0%s",str);
-					else strvalue = str;
-					break;
+					{
+						CString str;
+						str=(char*)(_bstr_t)m_pRecordset->GetCollect("污水箱水位");	
+						if(atof(str)<1&&atof(str)>0) strvalue.Format("0%s",str);
+						else strvalue = str;
+						break;
+					}
 
 				}
 				VariantInit(&varVal);
@@ -471,4 +475,13 @@ void CDirtyWaterChart::ShowData()
 		m_pRecordset->Close();
 	    m_DirtyWaterGrid.Invalidate();
 		m_buttonlookbackClick++;
+}
+
+void CDirtyWaterChart::OnButtonInsertCurrent() 
+{
+	// TODO: Add your control notification handler code here
+	COleDateTime CurTime = COleDateTime::GetCurrentTime(); 
+	CString csTime = CurTime.Format("%Y-%m-%d %H:%M:%S");
+	m_nTime = csTime;
+	UpdateData(FALSE);
 }

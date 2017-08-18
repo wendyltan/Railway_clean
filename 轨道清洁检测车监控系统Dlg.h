@@ -27,6 +27,7 @@ class CMyDlg : public CDialog
 {
 // Construction
 public:
+	void RaiseAlarm(int setID,CString paraType);
 	void dealTimer(int teeID,CString chartname);
 	void ChartInit(int teeID,CString chartname);
 	void DatabaseDisconnect();
@@ -83,7 +84,6 @@ protected:
 	afx_msg void OnMaximum();
 	afx_msg void OnButtonVolt();
 	afx_msg void OnButtonWatchVideo();
-	afx_msg void OnButtonBeep();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 private:
@@ -110,7 +110,7 @@ private:
 	_ConnectionPtr m_pConnection;
 	_RecordsetPtr m_pRecordset;
 	
-	_RecordsetPtr m_pCurrentset[8];
+	_RecordsetPtr m_pCurrentset[9];
 	
 	double m_RecordNum;
 
@@ -122,9 +122,9 @@ private:
 	CString m_AlarmCurrent;
 
 	//time
-	 COleDateTime  CurTime;
-	 COleDateTimeSpan  tmSpan;
-	 CString csTime;
+	COleDateTime  CurTime;
+	COleDateTimeSpan  tmSpan;
+	CString csTime;
 
 
 

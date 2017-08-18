@@ -20,22 +20,22 @@ Class8=CAboutDlg
 Class9=CMyDlg
 
 ResourceCount=13
-Resource1=IDD_DIALOG_PRE_CHART
-Resource2=IDD_DIALOG_INSIDE_TEMP
-Resource3=IDD_DIALOG_MAIN
-Resource4=IDD_CLEAN_WATER_CHART
-Resource5=IDD_DIALOG_MAXIMUM
-Resource6=IDD_WATER_TEMP_CHART
-Resource7=IDD_DIALOG_VOLT
-Resource8=IDD_DIALOG_WATER_TEMP
+Resource1=IDD_DIALOG_VIDEO
+Resource2=IDD_CLEAN_WATER_CHART
+Resource3=IDD_DIALOG_WATER_TEMP
+Resource4=IDD_ABOUTBOX
+Resource5=IDD_WATER_TEMP_CHART
+Resource6=IDD_DIALOG_MAIN
+Resource7=IDD_DIALOG_INSIDE_TEMP
+Resource8=IDD_DIALOG_MAXIMUM
 Class10=CDirtyWaterChart
-Resource9=IDD_DIALOG_OUTSIDE_TEM
+Resource9=IDD_DIALOG_PRE_CHART
 Class11=CWaterTempChart
-Resource10=IDD_DIALOG_VIDEO
+Resource10=IDD_DIRTY_WATER_CHART
 Class12=CWindPreChart
-Resource11=IDD_ABOUTBOX
+Resource11=IDD_DIALOG_OUTSIDE_TEM
 Class13=CVideo
-Resource12=IDD_DIRTY_WATER_CHART
+Resource12=IDD_DIALOG_VOLT
 Class14=CMaximumChart
 Resource13=IDR_DIALOG_MENU
 
@@ -200,7 +200,7 @@ CommandCount=9
 [DLG:IDD_DIALOG_MAIN]
 Type=1
 Class=CMyDlg
-ControlCount=50
+ControlCount=48
 Control1=IDC_STATIC,button,1342177287
 Control2=IDC_ALARM_AREA,static,1342308352
 Control3=IDC_STATIC,button,1342177287
@@ -248,14 +248,12 @@ Control44=IDC_OUTSIDE_MAIN,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
 Control45=IDC_BUTTON_WATCH_VIDEO,button,1342242816
 Control46=IDC_ALARM_TIME,static,1342308352
 Control47=IDC_ALARM_CURRENT,static,1342308352
-Control48=IDC_STATIC,static,1342308352
-Control49=IDC_VOLT_MAIN,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
-Control50=IDC_BUTTON_BEEP,button,1342242816
+Control48=IDC_VOLT_MAIN,{B6C10489-FB89-11D4-93C9-006008A7EED4},1342242816
 
 [DLG:IDD_DIRTY_WATER_CHART]
 Type=1
 Class=CDirtyWaterChart
-ControlCount=16
+ControlCount=17
 Control1=IDC_STATIC,button,1342177287
 Control2=IDC_BUTTON_LOOKBACK,button,1342242816
 Control3=IDC_STATIC,button,1342177287
@@ -272,6 +270,7 @@ Control13=IDC_EDIT_WATER,edit,1350631552
 Control14=IDC_BUTTON_SHOW_SELECT,button,1342242816
 Control15=IDOK,button,1342242817
 Control16=IDCANCEL,button,1342242816
+Control17=IDC_BUTTON_INSERT_CURRENT,button,1342242816
 
 [CLS:CDirtyWaterChart]
 Type=0
@@ -280,11 +279,12 @@ ImplementationFile=DirtyWaterChart.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=CDirtyWaterChart
+VirtualFilter=dWC
 
 [DLG:IDD_WATER_TEMP_CHART]
 Type=1
 Class=CWaterTempChart
-ControlCount=20
+ControlCount=21
 Control1=IDC_STATIC,button,1342177287
 Control2=IDC_BUTTON_LOOKBACK,button,1342242816
 Control3=IDC_STATIC,button,1342177287
@@ -305,6 +305,7 @@ Control17=IDC_EDIT_OUTSIDE,edit,1350631552
 Control18=IDC_EDIT_INSIDE,edit,1350631552
 Control19=IDOK,button,1342242817
 Control20=IDCANCEL,button,1342242816
+Control21=IDC_BUTTON_INSERT_CURRENT2,button,1342242816
 
 [CLS:CWaterTempChart]
 Type=0
@@ -313,11 +314,12 @@ ImplementationFile=WaterTempChart.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=CWaterTempChart
+VirtualFilter=dWC
 
 [DLG:IDD_DIALOG_PRE_CHART]
 Type=1
 Class=CWindPreChart
-ControlCount=20
+ControlCount=21
 Control1=IDC_STATIC,button,1342177287
 Control2=IDC_BUTTON_LOOKBACK,button,1342242816
 Control3=IDC_STATIC,button,1342177287
@@ -338,6 +340,7 @@ Control17=IDC_EDIT_BACK_PRE1,edit,1350631552
 Control18=IDC_EDIT_BACK_PRE2,edit,1350631552
 Control19=IDOK,button,1342242817
 Control20=IDCANCEL,button,1342242816
+Control21=IDC_BUTTON_INSERT_CURRENT,button,1342242816
 
 [CLS:CWindPreChart]
 Type=0
@@ -346,6 +349,7 @@ ImplementationFile=WindPreChart.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=CWindPreChart
+VirtualFilter=dWC
 
 [DLG:IDD_DIALOG_VIDEO]
 Type=1
@@ -368,7 +372,7 @@ LastObject=CVideo
 [DLG:IDD_DIALOG_MAXIMUM]
 Type=1
 Class=CMaximumChart
-ControlCount=15
+ControlCount=19
 Control1=IDC_STATIC,button,1342177287
 Control2=IDC_BUTTON_LOOKBACK,button,1342242816
 Control3=IDC_STATIC,button,1342177287
@@ -384,6 +388,10 @@ Control12=IDC_BUTTON_SHOW_SELECT,button,1342242816
 Control13=IDC_EDIT_MAXIMUM,edit,1350631552
 Control14=IDOK,button,1342242817
 Control15=IDCANCEL,button,1342242816
+Control16=IDC_BUTTON_INSERT_CURRENT,button,1342242816
+Control17=IDC_STATIC,static,1342308352
+Control18=IDC_STATIC,static,1342308352
+Control19=IDC_STATIC,static,1342308352
 
 [CLS:CMaximumChart]
 Type=0
@@ -392,4 +400,5 @@ ImplementationFile=MaximumChart.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=CMaximumChart
+VirtualFilter=dWC
 

@@ -283,11 +283,15 @@ void CCleanWaterChart::OnButtonOutputTable()
 				switch (l)
 				{
 				case 0:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("时间");
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("时间");
+						break;
+					}
 				case 1:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("清水箱水位");
-					break;
+					{
+						strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("清水箱水位");
+						break;
+					}
 
 				}
 				VariantInit(&varVal);

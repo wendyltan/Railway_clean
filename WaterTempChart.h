@@ -67,12 +67,12 @@ protected:
 
 	// Generated message map functions
 	//{{AFX_MSG(CWaterTempChart)
-		// NOTE: the ClassWizard will add member functions here
 	virtual BOOL OnInitDialog();
 	afx_msg void OnButtonLookback();
 	afx_msg void OnButtonOutputTable();
 	afx_msg void OnButtonConfirm();
 	afx_msg void OnButtonShowSelect();
+	afx_msg void OnButtonInsertCurrent();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
