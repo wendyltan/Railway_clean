@@ -82,6 +82,7 @@ protected:
 	afx_msg void OnDestroy();
 	afx_msg void OnWindPre();
 	afx_msg void OnMaximum();
+	afx_msg void OnAlarm();
 	afx_msg void OnButtonVolt();
 	afx_msg void OnButtonWatchVideo();
 	//}}AFX_MSG
@@ -110,7 +111,7 @@ private:
 	_ConnectionPtr m_pConnection;
 	_RecordsetPtr m_pRecordset;
 	
-	_RecordsetPtr m_pCurrentset[9];
+	_RecordsetPtr m_pCurrentset[10];
 	
 	double m_RecordNum;
 
@@ -120,6 +121,7 @@ private:
 	CString m_AlarmTime;
 	CString m_AlarmArea;
 	CString m_AlarmCurrent;
+	int m_AlarmFlag;
 
 	//time
 	COleDateTime  CurTime;

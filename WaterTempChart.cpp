@@ -88,7 +88,7 @@ void CWaterTempChart::GridInit()
 	m_TempGrid.SetColumnCount(m_nCols);
 	m_TempGrid.SetFixedRowCount(m_nFixRows);
 	m_TempGrid.SetFixedColumnCount(m_nFixCols);
-	char gridHeader[5][20]={"id","时间","副发动机水温","车外环境温度","车内环境温度"};
+	char gridHeader[5][20]={"id","时间","副发动机水温","车外环境温度","车内温度"};
 
 	for(int col=0;col<m_TempGrid.GetColumnCount();col++)
 	{
@@ -183,7 +183,7 @@ void CWaterTempChart::OnButtonOutputTable()
 	// TODO: Add your control notification handler code here
 	UpdateData(true);
 	//change here
-	CString Field[4]={"时间","副发动机水温","车外环境温度","车内环境温度"};//列的标题
+	CString Field[4]={"时间","副发动机水温","车外环境温度","车内温度"};//列的标题
 	_Application exApp;//应用程序对象
 	_Workbook exBook;//工作簿对象
 	Workbooks exBooks;//工作簿集合对象
@@ -295,7 +295,7 @@ void CWaterTempChart::OnButtonOutputTable()
 					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("车外环境温度");	
 					break;
 				case 3:
-					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("车外环境温度");	
+					strvalue=(char*)(_bstr_t)m_pRecordset->GetCollect("车内温度");	
 					break;
 
 
@@ -390,7 +390,7 @@ BOOL CWaterTempChart::ChangeRecord()
 		  m_pRecordset->PutCollect("时间",_variant_t(m_nTime));
 		  m_pRecordset->PutCollect("副发动机水温",_variant_t(m_nEngine));
 		  m_pRecordset->PutCollect("车外环境温度",_variant_t(m_nOutside));
-		  m_pRecordset->PutCollect("车外环境温度",_variant_t(m_nInside));
+		  m_pRecordset->PutCollect("车内温度",_variant_t(m_nInside));
 
 		  m_nSelRow++;
 		  
@@ -482,7 +482,7 @@ void CWaterTempChart::ShowData()
  
 
 			//车内环境温度
-			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车外环境温度"));
+			str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车内温度"));
  			m_TempGrid.SetItemText(nRow,m_nInsideCol,str);
  
  

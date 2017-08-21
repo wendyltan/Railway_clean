@@ -2,13 +2,13 @@
 
 [General Info]
 Version=1
-LastClass=CMaximumChart
+LastClass=CAlarmChart
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "轨道清洁检测车监控系统.h"
 LastPage=0
 
-ClassCount=14
+ClassCount=15
 Class1=CCleanWaterChart
 Class2=CInsideTempDlg
 Class3=COilTemDlg
@@ -19,25 +19,27 @@ Class7=CMyApp
 Class8=CAboutDlg
 Class9=CMyDlg
 
-ResourceCount=13
-Resource1=IDD_DIALOG_VIDEO
-Resource2=IDD_CLEAN_WATER_CHART
-Resource3=IDD_DIALOG_WATER_TEMP
-Resource4=IDD_ABOUTBOX
-Resource5=IDD_WATER_TEMP_CHART
-Resource6=IDD_DIALOG_MAIN
-Resource7=IDD_DIALOG_INSIDE_TEMP
-Resource8=IDD_DIALOG_MAXIMUM
+ResourceCount=14
+Resource1=IDD_DIALOG_INSIDE_TEMP
+Resource2=IDD_WATER_TEMP_CHART
+Resource3=IDD_DIALOG_MAIN
+Resource4=IDD_DIRTY_WATER_CHART
+Resource5=IDD_CLEAN_WATER_CHART
+Resource6=IDD_DIALOG_VIDEO
+Resource7=IDD_DIALOG_ALARM
+Resource8=IDD_DIALOG_VOLT
 Class10=CDirtyWaterChart
-Resource9=IDD_DIALOG_PRE_CHART
+Resource9=IDD_DIALOG_WATER_TEMP
 Class11=CWaterTempChart
-Resource10=IDD_DIRTY_WATER_CHART
+Resource10=IDD_DIALOG_OUTSIDE_TEM
 Class12=CWindPreChart
-Resource11=IDD_DIALOG_OUTSIDE_TEM
+Resource11=IDD_DIALOG_MAXIMUM
 Class13=CVideo
-Resource12=IDD_DIALOG_VOLT
+Resource12=IDD_ABOUTBOX
 Class14=CMaximumChart
-Resource13=IDR_DIALOG_MENU
+Resource13=IDD_DIALOG_PRE_CHART
+Class15=CAlarmChart
+Resource14=IDR_DIALOG_MENU
 
 [CLS:CCleanWaterChart]
 Type=0
@@ -401,4 +403,26 @@ BaseClass=CDialog
 Filter=D
 LastObject=CMaximumChart
 VirtualFilter=dWC
+
+[DLG:IDD_DIALOG_ALARM]
+Type=1
+Class=CAlarmChart
+ControlCount=9
+Control1=IDC_STATIC,button,1342177287
+Control2=IDC_BUTTON_LOOKBACK,button,1342242816
+Control3=IDC_STATIC,button,1342177287
+Control4=IDC_BUTTON_OUTPUT_TABLE,button,1342242816
+Control5=IDC_GRID_ALARM,MFCGridCtrl,1342242816
+Control6=IDC_STATIC,static,1342308352
+Control7=IDC_TITLE,edit,1350631552
+Control8=IDOK,button,1342242817
+Control9=IDCANCEL,button,1342242816
+
+[CLS:CAlarmChart]
+Type=0
+HeaderFile=AlarmChart.h
+ImplementationFile=AlarmChart.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=CAlarmChart
 

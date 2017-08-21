@@ -100,7 +100,7 @@ BOOL CInsideTempDlg::OnInitDialog()
 	
 	//m_Chart.GetHeader().GetText().SetItem(0,COleVariant("hello"));
  
-     m_Chart.GetAxis().GetLeft().GetTitle().SetCaption("车内温度（车外温度测试）");  
+     m_Chart.GetAxis().GetLeft().GetTitle().SetCaption("车内温度");  
 	 //定义坐标系空间
 	 CSeries mycs0 =(CSeries)m_Chart.Series(0);
      CAxes coord = (CAxes)m_Chart.GetAxis();
@@ -129,7 +129,7 @@ BOOL CInsideTempDlg::OnInitDialog()
 	 m_pRecordset->MoveFirst();
 	 //先用前十条记录初始化
 	 for(int i =0;i<10;i++){
-		str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车外环境温度"));	
+		str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车内温度"));	
 		csTime= CurTime.Format("%H:%M:%S");
 		mycs0.Add(atof(str),csTime,RGB(255,0,0));
 		CurTime+= tmSpan;
@@ -159,7 +159,7 @@ void CInsideTempDlg::OnTimer(UINT nIDEvent)
 	if(nIDEvent == 1){	
 			
 		//使用这个可以让坐标轴动起来
-		str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车外环境温度"));	
+		str = (char*)(_bstr_t)m_pRecordset->GetCollect(_variant_t("车内温度"));	
 		csTime= CurTime.Format("%H:%M:%S");
      	m_Chart.Series(0).Add(atof(str),csTime,RGB(255,0,0));
 		CurTime+= tmSpan;

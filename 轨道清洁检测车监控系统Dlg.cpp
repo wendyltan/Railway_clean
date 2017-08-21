@@ -9,6 +9,7 @@
 #include "WaterTempChart.h"
 #include "WindPreChart.h"
 #include "MaximumChart.h"
+#include "AlarmChart.h"
 #include "Video.h"
 
 
@@ -35,7 +36,7 @@ struct TEXTINFO{
 struct TYPE{
 	CString TableTypeName;
 	int TableTypeID;
-}tabletype[9];
+}tabletype[10];
 
 
 struct teeType{
@@ -109,6 +110,7 @@ CMyDlg::CMyDlg(CWnd* pParent /*=NULL*/)
 	m_AlarmTime = _T("");
 	m_AlarmArea = _T("");
 	m_AlarmCurrent = _T("");
+	m_AlarmFlag = 0;
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 
@@ -132,6 +134,9 @@ CMyDlg::CMyDlg(CWnd* pParent /*=NULL*/)
 
 	tabletype[8].TableTypeName = "上限表";//maximum,for alarm raising
 	tabletype[8].TableTypeID = 8;
+
+	tabletype[9].TableTypeName = "报警表";//store alarm data
+	tabletype[9].TableTypeID = 9;
 
 	
 
@@ -167,7 +172,7 @@ CMyDlg::CMyDlg(CWnd* pParent /*=NULL*/)
 	teechart[0].teeID = 0;
 	teechart[0].tchartname = "车外环境温度";
 	teechart[1].teeID = 1;
-	teechart[1].tchartname = "车外环境温度";
+	teechart[1].tchartname = "车内温度";
 	teechart[2].teeID = 2;
 	teechart[2].tchartname = "副发动机水温";
 	teechart[3].teeID = 3;
@@ -232,6 +237,7 @@ BEGIN_MESSAGE_MAP(CMyDlg, CDialog)
 	ON_WM_DESTROY()
 	ON_COMMAND(IDM_WIND_PRE, OnWindPre)
 	ON_COMMAND(IDM_MAXIMUM, OnMaximum)
+	ON_COMMAND(IDM_ALARM, OnAlarm)
 	ON_BN_CLICKED(IDC_BUTTON_VOLT, OnButtonVolt)
 	ON_BN_CLICKED(IDC_BUTTON_WATCH_VIDEO, OnButtonWatchVideo)
 	//}}AFX_MSG_MAP
@@ -270,7 +276,7 @@ BOOL CMyDlg::OnInitDialog()
 	// TODO: Add extra initialization here
 	
 
-	for(int i=0;i<9;i++)
+	for(int i=0;i<10;i++)
 	{
 		m_pCurrentset[i] = JudgeType(i);
 	}
@@ -411,13 +417,20 @@ void CMyDlg::OnTimer(UINT nIDEvent)
 			dealTimer(3,teechart[3].tchartname);
 			CurTime+= tmSpan;
 
+			
+			//raise alarm
+			RaiseAlarm(4,"副发动机水温");
+			RaiseAlarm(4,"车外环境温度");
+			RaiseAlarm(4,"车内温度");
+			RaiseAlarm(7,"逆变器电压");
+
 			m_pCurrentset[4]->MoveNext();
 			m_pCurrentset[7]->MoveNext();
 			m_RecordNum++;
 		}
 		else if(m_pCurrentset[4]->adoEOF)
 		{
-		  KillTimer(1);m_pCurrentset[4]->Close();//MessageBox("END OF RECORD!");
+		  KillTimer(1);m_pCurrentset[4]->Close();
 		}
 		else if(m_pCurrentset[7]->adoEOF)
 		{
@@ -650,6 +663,14 @@ void CMyDlg::OnMaximum()
 	
 }
 
+void CMyDlg::OnAlarm() 
+{
+	// TODO: Add your command handler code here
+	CAlarmChart ac;
+	ac.DoModal();
+	
+}
+
 
 
 void CMyDlg::DatabaseConnect()
@@ -817,6 +838,7 @@ _RecordsetPtr CMyDlg::JudgeType(int type)
 			}
 		//电压 case7
 		//上限值 case8
+		//报警 case9
 
 	}
 
@@ -831,6 +853,8 @@ void CMyDlg::DatabaseDisconnect()
 {
 	::CoUninitialize();
 	m_pRecordset->Close();
+	//m_pCurrentset[8]->Close();
+	//m_pCurrentset[9]->Close();
 }
 
 void CMyDlg::OnDestroy() 
@@ -963,12 +987,45 @@ void CMyDlg::RaiseAlarm(int setID,CString paraType)
 	{
 		m_AlarmArea = paraType;
 		m_AlarmCurrent.Format("参数当前值：%s\n参数上限值：%s",currentParaData,ParaMax);
-		m_AlarmTime = csTime;
+		m_AlarmTime = CurTime.Format("%Y-%m-%d %H:%M:%S");
 		UpdateData(FALSE);
 		MessageBeep(MB_ICONASTERISK);
+
+
+		
+		//记录进报警表
+		//如果没有重复的记录，记录；否则不记录并且提示
+		CString recordCurrent;
+		m_pCurrentset[9]->MoveFirst();
+		while(!m_pCurrentset[9]->adoEOF){
+			recordCurrent = (char*)(_bstr_t)m_pCurrentset[9]->GetCollect(_variant_t("当前值"));
+			if(recordCurrent == currentParaData) {m_AlarmFlag=1;break;}	
+			m_pCurrentset[9]->MoveNext();
+		}
+
+		m_pCurrentset[9]->MoveLast();
+		if(m_AlarmFlag!=1)
+		{
+			//记录进报警表
+			m_pCurrentset[9]->AddNew();
+					
+			m_pCurrentset[9]->PutCollect("时间",_variant_t(m_AlarmTime));
+			m_pCurrentset[9]->PutCollect("参数名称",_variant_t(m_AlarmArea));
+			m_pCurrentset[9]->PutCollect("当前值",_variant_t(currentParaData));
+
+			m_pCurrentset[9]->PutCollect("参数上限值",_variant_t(ParaMax));
+
+				
+			m_pCurrentset[9]->Update();
+
+		}
+		m_AlarmFlag = 0;
+	
+
+
 	}
 
-	//记录进报警表
+	
 	
 
 }

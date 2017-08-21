@@ -94,7 +94,7 @@ BOOL CWaterTempDlg::OnInitDialog()
 	
 	//m_Chart.GetHeader().GetText().SetItem(0,COleVariant("hello"));
  
-     m_Chart.GetAxis().GetLeft().GetTitle().SetCaption("车内温度（车外温度测试）");  
+     m_Chart.GetAxis().GetLeft().GetTitle().SetCaption("副发动机水温");  
 	 //定义坐标系空间
 	 CSeries mycs0 =(CSeries)m_Chart.Series(0);
      CAxes coord = (CAxes)m_Chart.GetAxis();
