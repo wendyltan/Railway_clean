@@ -2,13 +2,13 @@
 
 [General Info]
 Version=1
-LastClass=CAlarmChart
+LastClass=CParaCal
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "轨道清洁检测车监控系统.h"
 LastPage=0
 
-ClassCount=15
+ClassCount=16
 Class1=CCleanWaterChart
 Class2=CInsideTempDlg
 Class3=COilTemDlg
@@ -19,27 +19,29 @@ Class7=CMyApp
 Class8=CAboutDlg
 Class9=CMyDlg
 
-ResourceCount=14
-Resource1=IDD_DIALOG_INSIDE_TEMP
-Resource2=IDD_WATER_TEMP_CHART
-Resource3=IDD_DIALOG_MAIN
-Resource4=IDD_DIRTY_WATER_CHART
-Resource5=IDD_CLEAN_WATER_CHART
+ResourceCount=15
+Resource1=IDD_DIALOG_VOLT
+Resource2=IDD_DIALOG_MAXIMUM
+Resource3=IDD_DIALOG_OUTSIDE_TEM
+Resource4=IDD_WATER_TEMP_CHART
+Resource5=IDD_DIALOG_WATER_TEMP
 Resource6=IDD_DIALOG_VIDEO
-Resource7=IDD_DIALOG_ALARM
-Resource8=IDD_DIALOG_VOLT
+Resource7=IDD_ABOUTBOX
+Resource8=IDD_DIRTY_WATER_CHART
 Class10=CDirtyWaterChart
-Resource9=IDD_DIALOG_WATER_TEMP
+Resource9=IDD_DIALOG_PRE_CHART
 Class11=CWaterTempChart
-Resource10=IDD_DIALOG_OUTSIDE_TEM
+Resource10=IDD_CLEAN_WATER_CHART
 Class12=CWindPreChart
-Resource11=IDD_DIALOG_MAXIMUM
+Resource11=IDD_DIALOG_ALARM
 Class13=CVideo
-Resource12=IDD_ABOUTBOX
+Resource12=IDD_DIALOG_INSIDE_TEMP
 Class14=CMaximumChart
-Resource13=IDD_DIALOG_PRE_CHART
+Resource13=IDD_DIALOG_PARA_CAL
 Class15=CAlarmChart
-Resource14=IDR_DIALOG_MENU
+Resource14=IDD_DIALOG_MAIN
+Class16=CParaCal
+Resource15=IDR_DIALOG_MENU
 
 [CLS:CCleanWaterChart]
 Type=0
@@ -188,16 +190,15 @@ Class=CMyDlg
 [MNU:IDR_DIALOG_MENU]
 Type=1
 Class=?
-Command1=IDM_CALMAXORMIN
-Command2=IDM_CALAVER
-Command3=IDM_ABOUT
-Command4=IDM_CLEAN_WATER
-Command5=IDM_DIRTY_WATER
-Command6=IDM_WATER_TEMP
-Command7=IDM_WIND_PRE
-Command8=IDM_ALARM
-Command9=IDM_MAXIMUM
-CommandCount=9
+Command1=IDM_ANALIZE
+Command2=IDM_ABOUT
+Command3=IDM_CLEAN_WATER
+Command4=IDM_DIRTY_WATER
+Command5=IDM_WATER_TEMP
+Command6=IDM_WIND_PRE
+Command7=IDM_ALARM
+Command8=IDM_MAXIMUM
+CommandCount=8
 
 [DLG:IDD_DIALOG_MAIN]
 Type=1
@@ -425,4 +426,30 @@ ImplementationFile=AlarmChart.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=CAlarmChart
+
+[DLG:IDD_DIALOG_PARA_CAL]
+Type=1
+Class=CParaCal
+ControlCount=12
+Control1=IDOK,button,1342242817
+Control2=IDCANCEL,button,1342242816
+Control3=IDC_COMBO_TABLE,combobox,1344340226
+Control4=IDC_STATIC,static,1342308352
+Control5=IDC_STATIC,static,1342308352
+Control6=IDC_STATIC,static,1342308352
+Control7=IDC_STATIC,static,1342308352
+Control8=IDC_EDIT_MAX,edit,1350631552
+Control9=IDC_EDIT_MIN,edit,1350631552
+Control10=IDC_EDIT_AVG,edit,1350631552
+Control11=IDC_STATIC,static,1342308352
+Control12=IDC_COMBO_COL,combobox,1478557954
+
+[CLS:CParaCal]
+Type=0
+HeaderFile=ParaCal.h
+ImplementationFile=ParaCal.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=IDC_COMBO_COL
+VirtualFilter=dWC
 

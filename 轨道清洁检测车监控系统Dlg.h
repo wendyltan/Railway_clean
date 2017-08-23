@@ -83,6 +83,7 @@ protected:
 	afx_msg void OnWindPre();
 	afx_msg void OnMaximum();
 	afx_msg void OnAlarm();
+	afx_msg void OnAnalize();
 	afx_msg void OnButtonVolt();
 	afx_msg void OnButtonWatchVideo();
 	//}}AFX_MSG

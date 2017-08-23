@@ -24,6 +24,7 @@
 #define IDD_DIALOG_VIDEO                158
 #define IDD_DIALOG_MAXIMUM              160
 #define IDD_DIALOG_ALARM                161
+#define IDD_DIALOG_PARA_CAL             162
 #define IDC_EDIT_WIND_PRE               1005
 #define IDC_BUTTON_WINDPRE              1007
 #define IDC_BUTTON_OILPRE               1008
@@ -49,10 +50,13 @@
 #define IDC_EDIT1                       1031
 #define IDC_EDIT_FRONT_LEFT             1031
 #define IDC_TITLE                       1031
+#define IDC_EDIT_MAX                    1031
 #define IDC_EDIT2                       1032
 #define IDC_EDIT_TIME                   1032
+#define IDC_EDIT_MIN                    1032
 #define IDC_EDIT3                       1033
 #define IDC_RANGE_CHANGE                1033
+#define IDC_EDIT_AVG                    1033
 #define IDC_EDIT4                       1034
 #define IDC_ALARM_CHANGE                1034
 #define IDC_VOLT                        1035
@@ -117,6 +121,8 @@
 #define IDC_EDIT_PARAMETER              1085
 #define IDC_EDIT_MAXIMUM                1086
 #define IDC_GRID_ALARM                  1087
+#define IDC_COMBO_TABLE                 1088
+#define IDC_COMBO_COL                   1089
 #define IDM_LOOKBACK                    32771
 #define IDM_CURRANGE                    32772
 #define IDM_ALRAMHIS                    32773
@@ -134,14 +140,15 @@
 #define IDM_WIND_PRE                    32784
 #define IDM_ALARM                       32785
 #define IDM_MAXIMUM                     32786
+#define IDM_ANALIZE                     32787
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        162
-#define _APS_NEXT_COMMAND_VALUE         32787
-#define _APS_NEXT_CONTROL_VALUE         1088
+#define _APS_NEXT_RESOURCE_VALUE        163
+#define _APS_NEXT_COMMAND_VALUE         32788
+#define _APS_NEXT_CONTROL_VALUE         1090
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

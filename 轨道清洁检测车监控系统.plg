@@ -6,13 +6,13 @@
 --------------------Configuration: 轨道清洁检测车监控系统 - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP37CF.tmp" with contents
+Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP4BC4.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /FR"Debug/" /Fp"Debug/轨道清洁检测车监控系统.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
-"C:\Users\Wendy\Desktop\清洁车\轨道清洁检测车监控系统备份 -819尝试修正曲线同步\轨道清洁检测车监控系统Dlg.cpp"
+"C:\Users\Wendy\Desktop\清洁车\轨道清洁检测车监控系统备份 -823增加平均值等计算功能\ParaCal.cpp"
 ]
-Creating command line "cl.exe @C:\Users\Wendy\AppData\Local\Temp\RSP37CF.tmp" 
-Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP37D0.tmp" with contents
+Creating command line "cl.exe @C:\Users\Wendy\AppData\Local\Temp\RSP4BC4.tmp" 
+Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP4BC5.tmp" with contents
 [
 /nologo /subsystem:windows /incremental:yes /pdb:"Debug/轨道清洁检测车监控系统.pdb" /debug /machine:I386 /out:"Debug/轨道清洁检测车监控系统.exe" /pdbtype:sept 
 ".\Debug\GridCell.obj"
@@ -21,12 +21,14 @@ Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP37D0.tmp" with con
 ".\Debug\GridDropTarget.obj"
 ".\Debug\InPlaceEdit.obj"
 ".\Debug\TitleTip.obj"
+".\Debug\AlarmChart.obj"
 ".\Debug\CleanWaterChart.obj"
 ".\Debug\DirtyWaterChart.obj"
 ".\Debug\MaximumChart.obj"
 ".\Debug\WaterTempChart.obj"
 ".\Debug\WindPreChart.obj"
 ".\Debug\excel.obj"
+".\Debug\ParaCal.obj"
 ".\Debug\StdAfx.obj"
 ".\Debug\轨道清洁检测车监控系统.obj"
 ".\Debug\轨道清洁检测车监控系统Dlg.obj"
@@ -176,14 +178,14 @@ Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP37D0.tmp" with con
 ".\Debug\wmpsettings.obj"
 ".\Debug\wmpstringcollection.obj"
 ".\Debug\轨道清洁检测车监控系统.res"
-".\Debug\AlarmChart.obj"
 ]
-Creating command line "link.exe @C:\Users\Wendy\AppData\Local\Temp\RSP37D0.tmp"
+Creating command line "link.exe @C:\Users\Wendy\AppData\Local\Temp\RSP4BC5.tmp"
 <h3>Output Window</h3>
 Compiling...
-轨道清洁检测车监控系统Dlg.cpp
+ParaCal.cpp
+C:\Users\Wendy\Desktop\清洁车\轨道清洁检测车监控系统备份 -823增加平均值等计算功能\ParaCal.cpp(252) : warning C4244: 'argument' : conversion from 'double' to 'char', possible loss of data
 Linking...
-Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP3997.tmp" with contents
+Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP4C63.tmp" with contents
 [
 /nologo /o"Debug/轨道清洁检测车监控系统.bsc" 
 ".\Debug\StdAfx.sbr"
@@ -193,12 +195,14 @@ Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP3997.tmp" with con
 ".\Debug\GridDropTarget.sbr"
 ".\Debug\InPlaceEdit.sbr"
 ".\Debug\TitleTip.sbr"
+".\Debug\AlarmChart.sbr"
 ".\Debug\CleanWaterChart.sbr"
 ".\Debug\DirtyWaterChart.sbr"
 ".\Debug\MaximumChart.sbr"
 ".\Debug\WaterTempChart.sbr"
 ".\Debug\WindPreChart.sbr"
 ".\Debug\excel.sbr"
+".\Debug\ParaCal.sbr"
 ".\Debug\轨道清洁检测车监控系统.sbr"
 ".\Debug\轨道清洁检测车监控系统Dlg.sbr"
 ".\Debug\InsideTempDlg.sbr"
@@ -345,9 +349,8 @@ Creating temporary file "C:\Users\Wendy\AppData\Local\Temp\RSP3997.tmp" with con
 ".\Debug\wmpplaylistarray.sbr"
 ".\Debug\wmpplaylistcollection.sbr"
 ".\Debug\wmpsettings.sbr"
-".\Debug\wmpstringcollection.sbr"
-".\Debug\AlarmChart.sbr"]
-Creating command line "bscmake.exe @C:\Users\Wendy\AppData\Local\Temp\RSP3997.tmp"
+".\Debug\wmpstringcollection.sbr"]
+Creating command line "bscmake.exe @C:\Users\Wendy\AppData\Local\Temp\RSP4C63.tmp"
 Creating browse info file...
 <h3>Output Window</h3>
 

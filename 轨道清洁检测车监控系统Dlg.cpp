@@ -4,17 +4,8 @@
 #include "stdafx.h"
 #include "轨道清洁检测车监控系统.h"
 #include "轨道清洁检测车监控系统Dlg.h"
-#include "CleanWaterChart.h"
-#include "DirtyWaterChart.h"
-#include "WaterTempChart.h"
-#include "WindPreChart.h"
-#include "MaximumChart.h"
-#include "AlarmChart.h"
-#include "Video.h"
 
-
-#include "TeeInclude.h"
-
+#include "ExtraInclude.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -238,6 +229,7 @@ BEGIN_MESSAGE_MAP(CMyDlg, CDialog)
 	ON_COMMAND(IDM_WIND_PRE, OnWindPre)
 	ON_COMMAND(IDM_MAXIMUM, OnMaximum)
 	ON_COMMAND(IDM_ALARM, OnAlarm)
+	ON_COMMAND(IDM_ANALIZE,OnAnalize)
 	ON_BN_CLICKED(IDC_BUTTON_VOLT, OnButtonVolt)
 	ON_BN_CLICKED(IDC_BUTTON_WATCH_VIDEO, OnButtonWatchVideo)
 	//}}AFX_MSG_MAP
@@ -668,6 +660,13 @@ void CMyDlg::OnAlarm()
 	// TODO: Add your command handler code here
 	CAlarmChart ac;
 	ac.DoModal();
+	
+}
+void CMyDlg::OnAnalize() 
+{
+	// TODO: Add your command handler code here
+	CParaCal adlg;
+	adlg.DoModal();
 	
 }
 
