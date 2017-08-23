@@ -4,6 +4,9 @@
 #include "stdafx.h"
 #include "轨道清洁检测车监控系统.h"
 #include "ParaCal.h"
+#include<algorithm>
+
+using namespace std;
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -33,6 +36,11 @@ CParaCal::CParaCal(CWnd* pParent /*=NULL*/)
 	curTableName = _T("");
 	curRowIndex = 0;
 	curRowName = _T("");
+
+	for(int i=0;i<100;i++)
+	{
+		TempData[i] = 0;
+	}
 
 	//type init----------------------------------------------------------
 	tabletype[0].TableTypeName = "清洁车经纬度表"; //current position
@@ -141,6 +149,7 @@ BOOL CParaCal::OnInitDialog()
 	CDialog::OnInitDialog();
 	
 	// TODO: Add extra initialization here
+	
 	for(int i=0;i<8;i++)
 	{
 		m_pCurrentset[i] = JudgeType(i);
@@ -227,6 +236,7 @@ void CParaCal::OnSelchangeComboCol()
 	// TODO: Add your control notification handler code here
 	int iPos=((CComboBox*)GetDlgItem(IDC_COMBO_COL))->GetCurSel();
 	curRowName = tabletype[curTableIndex].TableRow[iPos];
+	MessageBox(curRowName);
 	/*CString ipos;
 	ipos.Format("%d",iPos);
 	MessageBox(ipos);*/
@@ -235,7 +245,7 @@ void CParaCal::OnSelchangeComboCol()
 	while(!m_pCurrentset[curTableIndex]->adoEOF)
 	{
 
-		//cal this row's sum,max and min
+		//cal this col's sum,max and min
 
 		TempData[i] = atof((char*)(_bstr_t)m_pCurrentset[curTableIndex]->GetCollect(_variant_t(curRowName)));
 		m_pCurrentset[curTableIndex]->MoveNext();
@@ -243,13 +253,31 @@ void CParaCal::OnSelchangeComboCol()
 	}
 
 	double tempSum = 0;
+	double tempMax = 0;
+	double tempMin = 0;
+	double tempAve = 0;
+
 	for(int j=0;j<i;j++)
 	{
 		tempSum += TempData[j];
 	}
-	double tempAve;
+
+	tempMax = *max_element(TempData,TempData+i);
+	tempMin = *min_element(TempData,TempData+i);
+
+	CString maxString,minString,aveString;
+	maxString.Format("%.3f",tempMax);
+	minString.Format("%.3f",tempMin);
+
+	m_Max = maxString;
+	m_Min = minString;
+
+
 	tempAve = tempSum/i;
-	m_Average = tempAve;
+	aveString.Format("%.3f",tempAve);
+
+	m_Average = aveString;
+
 	UpdateData(FALSE);
 
 }
