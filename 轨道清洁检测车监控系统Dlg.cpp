@@ -885,12 +885,11 @@ void CMyDlg::ChartInit(int teeID,CString chartname)
 	 CSeries mycs0 =(CSeries)tchart->Series(0);
      CAxes coord = (CAxes)tchart->GetAxis();
      CAxis left0 = (CAxis)coord.GetLeft();
-     left0.SetAutomatic(FALSE);
      left0.SetMinimum(0);
 	 if(teeID == 3) left0.SetMaximum(10);
-     else left0.SetMaximum(70);
-	 if(teeID == 3) left0.SetIncrement(1);
-     else left0.SetIncrement(10);
+     else left0.SetMaximum(40);
+	 if(teeID == 3) left0.SetIncrement(0.1);
+     else left0.SetIncrement(1);
      left0.SetStartPosition(0);
      left0.SetEndPosition(100);
      left0.SetPositionPercent(0);

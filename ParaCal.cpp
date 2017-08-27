@@ -236,7 +236,6 @@ void CParaCal::OnSelchangeComboCol()
 	// TODO: Add your control notification handler code here
 	int iPos=((CComboBox*)GetDlgItem(IDC_COMBO_COL))->GetCurSel();
 	curRowName = tabletype[curTableIndex].TableRow[iPos];
-	MessageBox(curRowName);
 	/*CString ipos;
 	ipos.Format("%d",iPos);
 	MessageBox(ipos);*/

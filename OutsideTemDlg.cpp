@@ -101,10 +101,9 @@ BOOL COutsideTemDlg::OnInitDialog()
 	 CSeries mycs0 =(CSeries)m_Chart.Series(0);
      CAxes coord = (CAxes)m_Chart.GetAxis();
      CAxis left0 = (CAxis)coord.GetLeft();
-     left0.SetAutomatic(FALSE);
      left0.SetMinimum(0);
-     left0.SetMaximum(60);
-     left0.SetIncrement(0);
+     left0.SetMaximum(40);
+     left0.SetIncrement(1);
      left0.SetStartPosition(0);
      left0.SetEndPosition(100);
      left0.SetPositionPercent(0);
